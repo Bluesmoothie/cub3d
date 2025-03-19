@@ -24,6 +24,10 @@ MLX_A			=	$(addprefix $(MLX), libmlx.a)
 #			SRC
 
 SRC_FILES		=	main		\
+					error		\
+					exit		\
+					init		\
+					video/mlx	\
 
 SRC 			= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 			= 	$(addprefix $(BUILD_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -46,6 +50,7 @@ FORCE:
 
 $(BUILD_DIR)		:
 				mkdir -p $(BUILD_DIR)
+				mkdir -p $(BUILD_DIR)/video
 
 $(BUILD_DIR)%.o	: $(SRC_DIR)%.c
 			$(CC) $(CFLAGS) -c $< -o $@

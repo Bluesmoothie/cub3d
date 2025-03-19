@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 21:38:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/03/19 22:42:45 by ygille           ###   ########.fr       */
+/*   Created: 2025/03/19 22:02:51 by ygille            #+#    #+#             */
+/*   Updated: 2025/03/19 22:42:49 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	init_video(t_mlx *mlx)
 {
-	t_context	ctx;
+	mlx->id = mlx_init();
+	if (mlx->id == NULL)
+		error(EMINIT);
+	mlx->win = mlx_new_window(mlx->id, WHEIGHT, WWIDTH, WTITLE);
+	if (mlx->win == NULL)
+		error(EMWIN);
+}
 
-	(void)argc;
-	(void)argv;
-	init_ctx(&ctx);
-	init_video(&ctx.mlx);
-	exit_call();
-	return (EXIT_SUCCESS);
+void	deinit_video(t_mlx mlx)
+{
+	if (mlx.id)
+	{
+		if (mlx.img)
+			mlx_destroy_image(mlx.id, mlx.img);
+		if (mlx.win)
+			mlx_destroy_window(mlx.id, mlx.win);
+		mlx_destroy_display(mlx.id);
+		free(mlx.id);
+	}
 }

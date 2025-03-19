@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   video.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/03/19 22:43:12 by ygille           ###   ########.fr       */
+/*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
+/*   Updated: 2025/03/19 22:43:26 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef VIDEO_H
+# define VIDEO_H
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <X11/keysymdef.h>
+# define WWIDTH	1024
+# define WHEIGHT	1024
+# define WTITLE	"CUB3D"
 
-# include "mlx.h"
-
-# include "error.h"
-# include "struct.h"
-# include "video.h"
-
-//	main.c
-
-//	error.c
-void	error(char *error);
-void	display_error(char *error);
-
-//	exit.c
-void	exit_set_ctx(t_context *ctx);
-void	exit_call(void);
-void	free_exit(t_context *ctx);
-
-//	init.c
-void	init_ctx(t_context *ctx);
+//	video/mlx.c
+void	init_video(t_mlx *mlx);
+void	deinit_video(t_mlx mlx);
 
 #endif
