@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/03/19 22:43:12 by ygille           ###   ########.fr       */
+/*   Updated: 2025/03/21 18:14:16 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <X11/keysymdef.h>
 
 # include "mlx.h"
+
+# include "libft.h"
 
 # include "error.h"
 # include "struct.h"

@@ -21,9 +21,15 @@ typedef struct s_mlx
 	void	*img_data;
 }	t_mlx;
 
+typedef struct s_textures
+{
+	/* data */
+}	t_textures;
+
 typedef struct s_context
 {
-	t_mlx	mlx;
+	t_mlx		mlx;
+	t_textures	txt;
 }	t_context;
 
 #endif
