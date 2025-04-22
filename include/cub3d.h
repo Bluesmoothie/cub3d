@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/22 17:13:53 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:23:47 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	free_exit(t_context *ctx);
 //	init.c
 void	init_ctx(t_context *ctx);
 void	init_textures(t_context *ctx);
+void	deinit_textures(t_context *ctx);
 
 #endif
