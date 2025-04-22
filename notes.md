@@ -23,3 +23,9 @@ La camera projette un rayon par pixel, la collision la plus proche de la camera 
 - >la distance de collision defini la taille du mur, remplir le reste avec le sol et plafond
 
 Un point de fuite
+
+## controles
+
+<- -> rotation camera
+WASD deplacement
+ESC X quitter

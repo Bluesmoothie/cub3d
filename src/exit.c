@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:23:06 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/22 17:22:59 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:54:10 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ void	free_exit(t_context *ctx)
 	deinit_textures(ctx);
 	deinit_video(ctx->mlx);
 	exit(0);
+}
+
+int	destroy_handler(void)
+{
+	exit_call();
+	return (0);
 }
 
 static void	exit_handler(t_context *ctx, int op)

@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   video.h                                            :+:      :+:    :+:   */
+/*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/22 17:53:20 by ygille           ###   ########.fr       */
+/*   Created: 2025/04/22 17:41:34 by ygille            #+#    #+#             */
+/*   Updated: 2025/04/22 17:53:34 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIDEO_H
-# define VIDEO_H
+#include "cub3d.h"
 
-# define WWIDTH		1024
-# define WHEIGHT	1024
-# define WTITLE		"CUB3D"
+int	keyPress_handler(t_kin *kin)
+{
+	(void)kin;
+	return (0);
+}
 
-//	video/mlx.c
-void	init_video(t_mlx *mlx);
-void	deinit_video(t_mlx mlx);
-
-//	video/render.c
-int		renderer(t_context *ctx);
-
-#endif
+int	keyRelease_handler(t_min *kin)
+{
+	(void)kin;
+	return (0);
+}

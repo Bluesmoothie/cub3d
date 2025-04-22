@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/22 17:23:47 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:53:55 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <X11/keysymdef.h>
+# include <X11/X.h>
 
 # include "mlx.h"
 
@@ -24,6 +25,7 @@
 # include "error.h"
 # include "struct.h"
 # include "video.h"
+# include "inputs.h"
 
 //	main.c
 
@@ -35,9 +37,11 @@ void	display_error(char *error, char *arg);
 void	exit_set_ctx(t_context *ctx);
 void	exit_call(void);
 void	free_exit(t_context *ctx);
+int		destroy_handler(void);
 
 //	init.c
 void	init_ctx(t_context *ctx);
+void	init_hooks_loops(t_context *ctx);
 void	init_textures(t_context *ctx);
 void	deinit_textures(t_context *ctx);
 
