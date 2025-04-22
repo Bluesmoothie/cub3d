@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:19:51 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/22 17:52:35 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:55:51 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,14 @@ void	init_textures(t_context *ctx)
 */
 void	deinit_textures(t_context *ctx)
 {
-	mlx_destroy_image(ctx->mlx.id, ctx->txt.EA);
-	mlx_destroy_image(ctx->mlx.id, ctx->txt.SO);
-	mlx_destroy_image(ctx->mlx.id, ctx->txt.NO);
-	mlx_destroy_image(ctx->mlx.id, ctx->txt.WE);
+	if (ctx->txt.EA)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt.EA);
+	if (ctx->txt.SO)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt.SO);
+	if (ctx->txt.NO)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt.NO);
+	if (ctx->txt.WE)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt.WE);
 }
 
 /*
