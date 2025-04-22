@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/03/19 22:09:04 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:01:13 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,17 @@ typedef struct s_mlx
 
 typedef struct s_textures
 {
-	/* data */
+	void	*NO;
+	void	*SO;
+	void	*WE;
+	void	*EA;
 }	t_textures;
 
 typedef struct s_context
 {
 	t_mlx		mlx;
 	t_textures	txt;
+	t_textures	txt_path;
 }	t_context;
 
 #endif
