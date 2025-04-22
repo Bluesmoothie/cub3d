@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/03/21 18:14:16 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:13:53 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 //	main.c
 
 //	error.c
-void	error(char *error);
-void	display_error(char *error);
+void	error(char *error, char *arg);
+void	display_error(char *error, char *arg);
 
 //	exit.c
 void	exit_set_ctx(t_context *ctx);
@@ -38,5 +38,6 @@ void	free_exit(t_context *ctx);
 
 //	init.c
 void	init_ctx(t_context *ctx);
+void	init_textures(t_context *ctx);
 
 #endif
