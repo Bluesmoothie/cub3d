@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:41:34 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 12:41:23 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 12:58:25 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	keyPress_handler(int keycode, t_kin *kin)
 		kin->movLeft = true;
 	else if (keycode == XK_d)
 		kin->movRight = true;
-	else if (keycode == XK_KP_Left)
+	else if (keycode == XK_Left)
 		kin->viewLeft = true;
-	else if (keycode == XK_KP_Right)
+	else if (keycode == XK_Right)
 		kin->viewRight = true;
 	return (0);
 }
@@ -41,9 +41,9 @@ int	keyRelease_handler(int keycode, t_kin *kin)
 		kin->movLeft = false;
 	else if (keycode == XK_d)
 		kin->movRight = false;
-	else if (keycode == XK_KP_Left)
+	else if (keycode == XK_Left)
 		kin->viewLeft = false;
-	else if (keycode == XK_KP_Right)
+	else if (keycode == XK_Right)
 		kin->viewRight = false;
 	return (0);
 }
