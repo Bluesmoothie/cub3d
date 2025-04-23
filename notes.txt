@@ -1,0 +1,34 @@
+NSEO : 4 textures differentes
+couleurs differenbtes sol/plafond
+fleche g/d --> rotation camera
+touches WASD --> déplacement caméra 
+ESC --> quitte et ferme fenetre
+Croix rouge --> fermer fenetre
+images de la minilibx 
+
+fichier de description : EXTENSION .CUB
+map: 6 caracteres --> 0 pour espaces vides, 1 pour murs, SNWE pour position point de départ
+
+map doit etre fermée pour etre valide --> pas forcément rectangulaire
+fichier .cub --> fichier de texture/description des elements suivis de map
+
+parsing
+parser agrv --> 1 argument finissant par .cub 
+fichier existant ou ouvrable 
+
+fichier --> 
+textures 
+
+structure : 
+north texture
+/n 
+east texture
+
+couleurs sol/plafond 
+0-255    , *3
+
+MAP : 
+espaces --> si != 1 --> error
+uniquement 0 ou NWSE --> si NSEW en double --> error
+si char[s] == \n et char[s - 1] != 1 --> error 
+
