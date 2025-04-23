@@ -6,19 +6,19 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:55:20 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 14:05:13 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:20:23 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "parse.h"
 
 static void	check_line_end(char *current, int pos);
-static void	fill_tab(t_textures *paths, char *tmp, int nb, int c_o_f);
+static void	fill_tab(int *tab, char *tmp, int nb);
 static char	*get_number(int pos, int i, char *current);
 static int	move_till_next_colour(char *current);
 
 
-void ceiling(char *current, int pos, t_textures *paths, int c_o_f)
+void ceiling(char *current, int pos, int *tab)
 {
 	int		i;
 	char	*tmp;
@@ -29,36 +29,27 @@ void ceiling(char *current, int pos, t_textures *paths, int c_o_f)
 	while (current[i] <= '9' && current[i] >= '0')
 		i++;
 	tmp = get_number(pos, i, current);
-	fill_tab(paths, tmp, 0, c_o_f);
+	fill_tab(tab, tmp, 0);
 	pos += move_till_next_colour(current + pos);
 	i = pos;
 	while (current[i] <= '9' && current[i] >= '0')
 		i++;
 	tmp = get_number(pos, i, current);
-	fill_tab(paths, tmp, 1, c_o_f);
+	fill_tab(tab, tmp, 1);
 	pos += move_till_next_colour(current + pos);
 	i = pos;
 	while (current[i] <= '9' && current[i] >= '0')
 		i++;
 	tmp = get_number(pos, i, current);
-	fill_tab(paths, tmp, 2, c_o_f);
+	fill_tab(tab, tmp, 2);
 	check_line_end(current, pos);
 }
 
-static void	fill_tab(t_textures *paths, char *tmp, int nb, int c_o_f)
+static void	fill_tab(int *tab, char *tmp, int nb)
 {
-	if (c_o_f == 1)
-	{
-		paths->floor[nb] = ft_atoi(tmp);
-		if (paths->floor[nb] < 0 || paths->floor[nb] > 255)
-			error("problem in floor or ceiling color", NULL);
-	}
-	if (c_o_f == 2)
-	{
-		paths->ceiling[nb] = ft_atoi(tmp);
-		if (paths->ceiling[nb] < 0 || paths->ceiling[nb] > 255)
-			error("problem in floor or ceiling color", NULL);
-	}
+	tab[nb] = ft_atoi(tmp);
+	if (tab[nb] < 0 || tab[nb] > 255)
+		error("problem in floor or ceiling color", NULL);
 	free(tmp);
 }
 

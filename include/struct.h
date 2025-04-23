@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 13:59:58 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:12:17 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ typedef struct s_textures
 	void	*SO;
 	void	*WE;
 	void	*EA;
-	int		floor[3];
-	int		ceiling[3];
 }	t_textures;
 
 typedef struct s_txtinfos
@@ -61,6 +59,8 @@ typedef struct s_context
 {
 	t_mlx		mlx;
 	t_textures	txt;
+	int		floor[3];
+	int		ceiling[3];
 	t_txtinfos	txt_infos;
 	t_textures	txt_id;
 	t_textures	txt_path;
