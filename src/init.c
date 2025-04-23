@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:19:51 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 14:23:31 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 14:26:17 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,14 @@ void	deinit_textures(t_context *ctx)
 		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.NO);
 	if (ctx->txt_id.WE)
 		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.WE);
+	if (ctx->txt_path.EA)
+		free(ctx->txt_path.EA);
+	if (ctx->txt_path.SO)
+		free(ctx->txt_path.SO);
+	if (ctx->txt_path.NO)
+		free(ctx->txt_path.NO);
+	if (ctx->txt_path.WE)
+		free(ctx->txt_path.WE);
 }
 
 /*
