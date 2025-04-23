@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 09:40:26 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 13:38:13 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:08:49 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	fill_second_letter(int direction);
 void directions(char *current, int i, t_textures *txt)
 {
 	if (!current[i] || !current[i + 1] || !current[i + 2])
-		error("Error in input file please rectify");
+		error("Error in input file please rectify", NULL);
 	if (!ft_strncmp(current + i, "NO", 2) || !ft_strncmp("current + i", "N", 1))
 		fill_path(current, i, txt, 1);
 	else if (!ft_strncmp(current + i, "SO", 2) || !ft_strncmp("current + i", "S", 1))
@@ -28,7 +28,7 @@ void directions(char *current, int i, t_textures *txt)
 	else if (!ft_strncmp(current + i, "EA", 2) || !ft_strncmp("current + i", "E", 1))
 		fill_path(current, i, txt, 4);
 	else
-		error("please check input file");
+		error("please check input file", NULL);
 }
 
 static void	fill_path(char *current, int pos, t_textures *txt, int direction)
@@ -48,15 +48,15 @@ static void	fill_path(char *current, int pos, t_textures *txt, int direction)
 		i++;
 	path = ft_substr(current, pos, i - pos);
 	if (!path)
-		malloc_error_txt(txt);
+		error("malloc_error", NULL);
 	if (direction == 1)
-		txt->NO = (void *)path;
+		txt->NO = path;
 	if (direction == 2)
-		txt->SO = (void *)path;
+		txt->SO = path;
 	if (direction == 3)
-		txt->WE = (void *)path;
+		txt->WE = path;
 	if (direction == 4)
-		txt->EA = (void *)path;
+		txt->EA = path;
 }
 
 static char	fill_second_letter(int direction)

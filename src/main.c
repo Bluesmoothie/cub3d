@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 14:00:12 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:10:10 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 	init_ctx(&ctx);
 	init_video(&ctx.mlx);
 	parse(argc, argv, &ctx);
-	printf("%s\n", (char *)(ctx.txt_path.EA));
 	// init_textures(&ctx);
 	init_hooks_loops(&ctx);
 	exit_call();

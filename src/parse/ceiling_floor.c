@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:55:20 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 13:21:05 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:05:13 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ static void	fill_tab(t_textures *paths, char *tmp, int nb, int c_o_f)
 	{
 		paths->floor[nb] = ft_atoi(tmp);
 		if (paths->floor[nb] < 0 || paths->floor[nb] > 255)
-			error("problem in floor or ceiling color");
+			error("problem in floor or ceiling color", NULL);
 	}
 	if (c_o_f == 2)
 	{
 		paths->ceiling[nb] = ft_atoi(tmp);
 		if (paths->ceiling[nb] < 0 || paths->ceiling[nb] > 255)
-			error("problem in floor or ceiling color");
+			error("problem in floor or ceiling color", NULL);
 	}
 	free(tmp);
 }
@@ -72,7 +72,7 @@ static int	move_till_next_colour(char *current)
 	while (current[i] == ' ')
 		i++;
 	if (current[i] != ',')
-		error("problem in floor or ceiling color");
+		error("problem in floor or ceiling color", NULL);
 	i++;
 	while (current[i] == ' ')
 		i++;
@@ -84,10 +84,10 @@ static char	*get_number(int pos, int i, char *current)
 	char	*tmp;
 	
 	if (pos == i || i > pos + 3)
-		error("problem in floor or ceiling color");
+		error("problem in floor or ceiling color", NULL);
 	tmp = ft_substr(current, pos, i - pos);
 	if (!tmp)
-		error("malloc error");
+		error("malloc error", NULL);
 	return (tmp);
 }
 
@@ -101,5 +101,5 @@ static void	check_line_end(char *current, int pos)
 	while (current[i] == ' ')
 		i++;
 	if (current[i] != '\n')
-		error("problem in floor or ceiling color");
+		error("problem in floor or ceiling color", NULL);
 }

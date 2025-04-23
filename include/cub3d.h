@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 13:59:30 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:06:18 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@
 # include "error.h"
 # include "struct.h"
 # include "video.h"
-# include "parse.h"# include "inputs.h"
+# include "parse.h"
+# include "inputs.h"
 
 //	main.c
 
 //	error.c
 void	error(char *error, char *arg);
 void	display_error(char *error, char *arg);
-void	malloc_error_txt(t_textures *txts);
 
 //	exit.c
 void	exit_set_ctx(t_context *ctx);
