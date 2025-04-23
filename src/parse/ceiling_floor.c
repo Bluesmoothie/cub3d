@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:55:20 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 14:20:23 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:13:25 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	check_line_end(char *current, int pos);
 static void	fill_tab(int *tab, char *tmp, int nb);
 static char	*get_number(int pos, int i, char *current);
 static int	move_till_next_colour(char *current);
-
 
 void ceiling(char *current, int pos, int *tab)
 {
