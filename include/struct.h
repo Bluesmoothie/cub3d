@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 15:23:01 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 15:25:10 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define STRUCT_H
 
 # include <stdbool.h>
+
+typedef struct s_player
+{
+	float	x;
+	float	y;
+	int		camera;
+}	t_player;
 
 typedef struct s_map
 {
@@ -75,6 +82,7 @@ typedef struct s_context
 	t_kin		kin;
 	t_min		min;
 	t_map		map;
+	t_player	player;
 }	t_context;
 
 #endif
