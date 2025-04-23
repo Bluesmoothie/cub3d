@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/22 17:53:55 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 12:36:24 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stdlib.h>
 # include <stdio.h>
-# include <X11/keysymdef.h>
-# include <X11/X.h>
 
 # include "mlx.h"
 

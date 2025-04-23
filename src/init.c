@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:19:51 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/22 17:55:51 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 12:50:14 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ void	init_ctx(t_context *ctx)
 */
 void	init_hooks_loops(t_context *ctx)
 {
-	mlx_loop_hook(ctx->mlx.id, renderer, (void*)ctx);
-	mlx_expose_hook(ctx->mlx.win, renderer, (void*)ctx);
+	mlx_hook(ctx->mlx.win, DestroyNotify, KeyPressMask, destroy_handler, NULL);
 	mlx_hook(ctx->mlx.win, KeyPress, KeyPressMask, keyPress_handler, (void*)&ctx->kin);
 	mlx_hook(ctx->mlx.win, KeyRelease, KeyReleaseMask, keyRelease_handler, (void*)&ctx->kin);
 	mlx_mouse_hook(ctx->mlx.win, mouse_handler, (void*)&ctx->min);
-	mlx_hook(ctx->mlx.win, DestroyNotify, KeyPressMask, destroy_handler, NULL);
+	mlx_expose_hook(ctx->mlx.win, renderer, (void*)ctx);
+	mlx_loop_hook(ctx->mlx.id, renderer, (void*)ctx);
+	mlx_loop(ctx->mlx.id);
 }
 
 /*

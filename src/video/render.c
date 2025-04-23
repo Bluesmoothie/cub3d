@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/22 17:53:14 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 12:52:52 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 int	renderer(t_context *ctx)
 {
+	static size_t	timer = 0;
+	static size_t	frame = 0;
+
 	(void)ctx;
-	return (0);
+	if (!(timer % 20))
+	{
+		frame++;
+		printf("Rendering frame %zu timer %zu\n", frame, timer);
+	}
+	return (timer++);
 }
