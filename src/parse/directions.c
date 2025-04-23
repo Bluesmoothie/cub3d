@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   directions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 09:40:26 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 14:08:49 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:04:26 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ static void	fill_path(char *current, int pos, t_textures *txt, int direction)
 	if (!path)
 		error("malloc_error", NULL);
 	if (direction == 1)
-		txt->NO = path;
+		txt->no = path;
 	if (direction == 2)
-		txt->SO = path;
+		txt->so = path;
 	if (direction == 3)
-		txt->WE = path;
+		txt->we = path;
 	if (direction == 4)
-		txt->EA = path;
+		txt->ea = path;
 }
 
 static char	fill_second_letter(int direction)

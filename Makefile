@@ -27,14 +27,15 @@ SRC_FILES		=	main				\
 					error				\
 					exit				\
 					init				\
-					video/mlx			\
-					parse/directions 	\
-					parse/parse			\
-					parse/parse_utils	\
+					inputs/keyboard		\
+					inputs/mouse		\
 					parse/ceiling_floor	\
-					inputs/keyboard	\
-					inputs/mouse	\
-					video/render	\
+					parse/directions 	\
+					parse/parse_utils	\
+					parse/parse			\
+					video/color			\
+					video/mlx			\
+					video/render		\
 
 SRC 			= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 			= 	$(addprefix $(BUILD_DIR), $(addsuffix .o, $(SRC_FILES)))

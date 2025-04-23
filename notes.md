@@ -39,3 +39,15 @@ https://lodev.org/cgtutor/raycasting.html
 ## Exemples
 
 http://users.atw.hu/wolf3d/
+
+X WIDTH
+Y HEIGHT (inverse)
+0<->WWIDTH
+^
+W
+H
+E
+I
+G
+H
+T

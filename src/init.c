@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:19:51 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 14:26:17 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 15:03:28 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ void	init_ctx(t_context *ctx)
 void	init_hooks_loops(t_context *ctx)
 {
 	mlx_hook(ctx->mlx.win, DestroyNotify, KeyPressMask, destroy_handler, NULL);
-	mlx_hook(ctx->mlx.win, KeyPress, KeyPressMask, keyPress_handler, (void*)&ctx->kin);
-	mlx_hook(ctx->mlx.win, KeyRelease, KeyReleaseMask, keyRelease_handler, (void*)&ctx->kin);
-	mlx_mouse_hook(ctx->mlx.win, mouse_handler, (void*)&ctx->min);
-	mlx_expose_hook(ctx->mlx.win, renderer, (void*)ctx);
-	mlx_loop_hook(ctx->mlx.id, renderer, (void*)ctx);
+	mlx_hook(ctx->mlx.win, KeyPress, KeyPressMask, keypress_handler,
+		(void *)&ctx->kin);
+	mlx_hook(ctx->mlx.win, KeyRelease, KeyReleaseMask, keyrelease_handler,
+		(void *)&ctx->kin);
+	mlx_mouse_hook(ctx->mlx.win, mouse_handler, (void *)&ctx->min);
+	mlx_expose_hook(ctx->mlx.win, renderer, (void *)ctx);
+	mlx_loop_hook(ctx->mlx.id, renderer, (void *)ctx);
 	mlx_loop(ctx->mlx.id);
 }
 
@@ -42,26 +44,26 @@ void	init_hooks_loops(t_context *ctx)
 */
 void	init_textures(t_context *ctx)
 {
-	ctx->txt_id.EA = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.EA, &ctx->txt_infos.width, &ctx->txt_infos.height);
-	verif(ctx, ctx->txt_id.EA, ctx->txt_path.EA);
-	ctx->txt_id.NO = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.NO, &ctx->txt_infos.width, &ctx->txt_infos.height);
-	verif(ctx, ctx->txt_id.NO, ctx->txt_path.NO);
-	ctx->txt_id.SO = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.SO, &ctx->txt_infos.width, &ctx->txt_infos.height);
-	verif(ctx, ctx->txt_id.SO, ctx->txt_path.SO);
-	ctx->txt_id.WE = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.WE, &ctx->txt_infos.width, &ctx->txt_infos.height);
-	verif(ctx, ctx->txt_id.WE, ctx->txt_path.WE);
-	ctx->txt.EA = mlx_get_data_addr(ctx->txt_id.EA, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
-	if (!ctx->txt.EA)
-		error("Mlx get data addr failed on", "EA");
-	ctx->txt.NO = mlx_get_data_addr(ctx->txt_id.NO, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
-	if (!ctx->txt.NO)
-		error("Mlx get data addr failed on", "NO");
-	ctx->txt.SO = mlx_get_data_addr(ctx->txt_id.SO, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
-	if (!ctx->txt.SO)
-		error("Mlx get data addr failed on", "SO");
-	ctx->txt.WE = mlx_get_data_addr(ctx->txt_id.WE, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
-	if (!ctx->txt.WE)
-		error("Mlx get data addr failed on", "WE");
+	ctx->txt_id.ea = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.ea, &ctx->txt_infos.width, &ctx->txt_infos.height);
+	verif(ctx, ctx->txt_id.ea, ctx->txt_path.ea);
+	ctx->txt_id.no = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.no, &ctx->txt_infos.width, &ctx->txt_infos.height);
+	verif(ctx, ctx->txt_id.no, ctx->txt_path.no);
+	ctx->txt_id.so = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.so, &ctx->txt_infos.width, &ctx->txt_infos.height);
+	verif(ctx, ctx->txt_id.so, ctx->txt_path.so);
+	ctx->txt_id.we = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.we, &ctx->txt_infos.width, &ctx->txt_infos.height);
+	verif(ctx, ctx->txt_id.we, ctx->txt_path.we);
+	ctx->txt.ea = mlx_get_data_addr(ctx->txt_id.ea, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
+	if (!ctx->txt.ea)
+		error("Mlx get data addr failed on", "ea");
+	ctx->txt.no = mlx_get_data_addr(ctx->txt_id.no, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
+	if (!ctx->txt.no)
+		error("Mlx get data addr failed on", "no");
+	ctx->txt.so = mlx_get_data_addr(ctx->txt_id.so, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
+	if (!ctx->txt.so)
+		error("Mlx get data addr failed on", "so");
+	ctx->txt.we = mlx_get_data_addr(ctx->txt_id.we, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
+	if (!ctx->txt.we)
+		error("Mlx get data addr failed on", "we");
 }
 
 /*
@@ -69,22 +71,22 @@ void	init_textures(t_context *ctx)
 */
 void	deinit_textures(t_context *ctx)
 {
-	if (ctx->txt_id.EA)
-		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.EA);
-	if (ctx->txt_id.SO)
-		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.SO);
-	if (ctx->txt_id.NO)
-		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.NO);
-	if (ctx->txt_id.WE)
-		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.WE);
-	if (ctx->txt_path.EA)
-		free(ctx->txt_path.EA);
-	if (ctx->txt_path.SO)
-		free(ctx->txt_path.SO);
-	if (ctx->txt_path.NO)
-		free(ctx->txt_path.NO);
-	if (ctx->txt_path.WE)
-		free(ctx->txt_path.WE);
+	if (ctx->txt_id.ea)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.ea);
+	if (ctx->txt_id.so)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.so);
+	if (ctx->txt_id.no)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.no);
+	if (ctx->txt_id.we)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.we);
+	if (ctx->txt_path.ea)
+		free(ctx->txt_path.ea);
+	if (ctx->txt_path.so)
+		free(ctx->txt_path.so);
+	if (ctx->txt_path.no)
+		free(ctx->txt_path.no);
+	if (ctx->txt_path.we)
+		free(ctx->txt_path.we);
 }
 
 /*
@@ -92,8 +94,8 @@ void	deinit_textures(t_context *ctx)
 */
 static void	verif(t_context *ctx, void *loaded, void *path)
 {
-	static int width = 0;
-	static int height = 0;
+	static int	width = 0;
+	static int	height = 0;
 
 	if (loaded == NULL)
 		error("Failed to load", path);
