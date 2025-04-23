@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:29:39 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 13:19:11 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:19:45 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void directions(char *current, int i, t_textures *txt);
 int	forward_char(char *str, char sep);
 
 //	ceiling_floor.c
-void ceiling(char *current, int pos, t_textures *paths, int c_o_f);
+void ceiling(char *current, int pos, int *tab);
 

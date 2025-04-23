@@ -6,15 +6,15 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 14:05:33 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:20:02 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
 static int	check_av(char **av);
-static void	fill_paths(int fd, t_textures *paths);
-static void	ceiling_floor(char *current, int pos, t_textures *paths);
+static void	fill_paths(int fd, t_context *ctx);
+static void	ceiling_floor(char *current, int pos, t_context *ctx);
 
 void	parse(int ac, char **av, t_context *ctx)
 {
@@ -24,7 +24,7 @@ void	parse(int ac, char **av, t_context *ctx)
 		error("wrong number of arguments", NULL);
 	fd = check_av(av);
 	ft_bzero(&ctx->txt_path, 4 * sizeof(void *));
-	fill_paths(fd, &ctx->txt_path);
+	fill_paths(fd, ctx);
 }
 
 static int	check_av(char **av)
@@ -48,7 +48,7 @@ static int	check_av(char **av)
 	return (fd);
 }
 
-static void	fill_paths(int fd, t_textures *paths)
+static void	fill_paths(int fd, t_context *ctx)
 {
 	char		*current;
 	int			i;
@@ -66,21 +66,21 @@ static void	fill_paths(int fd, t_textures *paths)
 		if (current[i] == '\n')
 			continue ;
 		if (j++ < 4)
-			directions(current, i, paths);
+			directions(current, i, &ctx->txt_path);
 		else if (j < 7)
-			ceiling_floor(current, i, paths);
+			ceiling_floor(current, i, ctx);
 		free(current);
 		if (j == 7)
 			break ;
 	}
 }
 
-static void	ceiling_floor(char *current, int pos, t_textures *paths)
+static void	ceiling_floor(char *current, int pos, t_context *ctx)
 {
 	if (current[pos] == 'C')
-		ceiling(current, pos, paths, 2);
+		ceiling(current, pos, ctx->ceiling);
 	else if (current[pos] == 'F')
-		ceiling(current, pos, paths, 1);
+		ceiling(current, pos, ctx->floor);
 	else
 		error("problem in floor or ceiling color", NULL);
 }
