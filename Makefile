@@ -1,4 +1,4 @@
-.PHONY			:	all clean fclean re norme FORCE
+.PHONY			:	all clean fclean re norm FORCE
 
 NAME			=	cub3d
 
@@ -32,6 +32,9 @@ SRC_FILES		=	main				\
 					parse/parse			\
 					parse/parse_utils	\
 					parse/ceiling_floor	\
+					inputs/keyboard	\
+					inputs/mouse	\
+					video/render	\
 
 SRC 			= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 			= 	$(addprefix $(BUILD_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -56,6 +59,7 @@ $(BUILD_DIR)		:
 				mkdir -p $(BUILD_DIR)
 				mkdir -p $(BUILD_DIR)/video
 				mkdir -p $(BUILD_DIR)/parse
+				mkdir -p $(BUILD_DIR)/inputs
 
 $(BUILD_DIR)%.o	: $(SRC_DIR)%.c
 			$(CC) $(CFLAGS) -c $< -o $@
@@ -73,5 +77,5 @@ fclean			:	clean
 
 re				:	fclean all
 
-norme			:
+norm			:
 				norminette $(SRC_DIR) include/

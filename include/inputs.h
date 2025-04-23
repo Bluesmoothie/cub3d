@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   video.h                                            :+:      :+:    :+:   */
+/*   inputs.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/22 17:53:20 by ygille           ###   ########.fr       */
+/*   Created: 2025/04/22 17:41:57 by ygille            #+#    #+#             */
+/*   Updated: 2025/04/23 12:41:34 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIDEO_H
-# define VIDEO_H
+#ifndef INPUTS_H
+# define INPUTS_H
 
-# define WWIDTH		1024
-# define WHEIGHT	1024
-# define WTITLE		"CUB3D"
+# define XK_MISCELLANY
+# define XK_LATIN1
 
-//	video/mlx.c
-void	init_video(t_mlx *mlx);
-void	deinit_video(t_mlx mlx);
+# include <X11/keysymdef.h>
+# include <X11/X.h>
 
-//	video/render.c
-int		renderer(t_context *ctx);
+//	inputs/keyboard.c
+int	keyPress_handler(int keycode, t_kin *kin);
+int	keyRelease_handler(int keycode, t_kin *kin);
+
+//	inputs/mouse.c
+int	mouse_handler(int button, int x, int y, t_min *min);
 
 #endif

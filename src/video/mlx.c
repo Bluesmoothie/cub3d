@@ -6,22 +6,28 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:02:51 by ygille            #+#    #+#             */
-/*   Updated: 2025/03/19 22:42:49 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:20:51 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+**	Initialize display and window
+*/
 void	init_video(t_mlx *mlx)
 {
 	mlx->id = mlx_init();
 	if (mlx->id == NULL)
-		error(EMINIT);
+		error(EMINIT, NULL);
 	mlx->win = mlx_new_window(mlx->id, WHEIGHT, WWIDTH, WTITLE);
 	if (mlx->win == NULL)
-		error(EMWIN);
+		error(EMWIN, NULL);
 }
 
+/*
+**	Deinitialize display and window
+*/
 void	deinit_video(t_mlx mlx)
 {
 	if (mlx.id)

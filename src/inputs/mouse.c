@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   video.h                                            :+:      :+:    :+:   */
+/*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/22 17:53:20 by ygille           ###   ########.fr       */
+/*   Created: 2025/04/22 17:41:42 by ygille            #+#    #+#             */
+/*   Updated: 2025/04/23 12:43:13 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIDEO_H
-# define VIDEO_H
+#include "cub3d.h"
 
-# define WWIDTH		1024
-# define WHEIGHT	1024
-# define WTITLE		"CUB3D"
-
-//	video/mlx.c
-void	init_video(t_mlx *mlx);
-void	deinit_video(t_mlx mlx);
-
-//	video/render.c
-int		renderer(t_context *ctx);
-
-#endif
+int	mouse_handler(int button, int x, int y, t_min *min)
+{
+	(void)min;
+	(void)x;
+	(void)y;
+	(void)button;
+	return (0);
+}

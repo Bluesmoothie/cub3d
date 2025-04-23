@@ -6,21 +6,29 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:17:32 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 11:18:05 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:00:19 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	error(char *error)
+/*
+**	Display error and exit properly
+*/
+void	error(char *error, char *arg)
 {
-	display_error(error);
+	display_error(error, arg);
 	exit_call();
 }
 
-void	display_error(char *error)
+/*
+**	Display an error
+*/
+void	display_error(char *error, char *arg)
 {
-	printf("Error : %s\n", error);
+	printf("Error\n %s", error);
+	if (arg)
+		printf(" : %s\n", arg);
 }
 
 void	malloc_error_txt(t_textures *txts)
