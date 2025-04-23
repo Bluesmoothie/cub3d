@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 15:01:05 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 15:27:24 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 //	video/color.c
 int		get_bgcolor(int color[3]);
 int		get_color(int t, int r, int g, int b);
+
+//	video/player.c
+void	player_moves(t_context *ctx);
 
 //	video/mlx.c
 void	init_video(t_mlx *mlx);

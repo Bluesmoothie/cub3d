@@ -35,6 +35,7 @@ SRC_FILES		=	main				\
 					parse/parse			\
 					video/color			\
 					video/mlx			\
+					video/player		\
 					video/render		\
 
 SRC 			= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
