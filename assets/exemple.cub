@@ -1,7 +1,7 @@
-NO ./Brick.xpm
-SO ./Stone.xpm
-WE ./Tiles.xpm
-EA ./Wood.xpm
+NO assets/Brick.xpm
+SO assets/Stone.xpm
+WE assets/Tiles.xpm
+EA assets/Wood.xpm
 
 F 220,100,0
 C 225,30,0
