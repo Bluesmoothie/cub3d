@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 15:02:00 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 15:23:01 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define STRUCT_H
 
 # include <stdbool.h>
+
+typedef struct s_map
+{
+	int		**map;
+	int		width;
+	int		height;
+}	t_map;
 
 typedef struct s_txtinfos
 {
@@ -67,6 +74,7 @@ typedef struct s_context
 	t_txtinfos	txt_infos;
 	t_kin		kin;
 	t_min		min;
+	t_map		map;
 }	t_context;
 
 #endif
