@@ -29,3 +29,13 @@ Un point de fuite
 <- -> rotation camera
 WASD deplacement
 ESC X quitter
+
+## Ressources
+
+https://perso.esiee.fr/~buzerl/sphinx_IMA/80%20raycast/raycast.html
+https://fr.wikipedia.org/wiki/Raycasting
+https://lodev.org/cgtutor/raycasting.html
+
+## Exemples
+
+http://users.atw.hu/wolf3d/
