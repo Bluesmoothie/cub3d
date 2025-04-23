@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/03/19 22:42:45 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 13:52:05 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	main(int argc, char **argv)
 {
 	t_context	ctx;
 
-	(void)argc;
-	(void)argv;
 	init_ctx(&ctx);
 	init_video(&ctx.mlx);
+	parse(argc, argv, &ctx);
+	printf("%s\n", (char *)(ctx.txt_path.EA));
 	exit_call();
 	return (EXIT_SUCCESS);
 }

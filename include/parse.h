@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 22:17:32 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 11:18:05 by sithomas         ###   ########.fr       */
+/*   Created: 2025/04/23 12:29:39 by sithomas          #+#    #+#             */
+/*   Updated: 2025/04/23 13:19:11 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "get_next_line.h"
 #include "cub3d.h"
 
-void	error(char *error)
-{
-	display_error(error);
-	exit_call();
-}
+//	parse.c
+void	parse(int ac, char **av, t_context *ctx);
 
-void	display_error(char *error)
-{
-	printf("Error : %s\n", error);
-}
+// directions.c 
+void directions(char *current, int i, t_textures *txt);
 
-void	malloc_error_txt(t_textures *txts)
-{
-	if (txts->EA)
-		free(txts->EA);
-	if (txts->NO)
-		free(txts->NO);
-	if (txts->WE)
-		free(txts->WE);
-	if (txts->SO)
-		free(txts->SO);
-	error("malloc error");
-}
+//	parse_utils.c
+int	forward_char(char *str, char sep);
+
+//	ceiling_floor.c
+void ceiling(char *current, int pos, t_textures *paths, int c_o_f);
+
