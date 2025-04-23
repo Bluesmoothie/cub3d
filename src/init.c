@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:19:51 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 12:50:14 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 14:26:17 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	init_hooks_loops(t_context *ctx)
 void	init_textures(t_context *ctx)
 {
 	ctx->txt_id.EA = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.EA, &ctx->txt_infos.width, &ctx->txt_infos.height);
-	verif(ctx, ctx->txt.EA, ctx->txt_path.EA);
+	verif(ctx, ctx->txt_id.EA, ctx->txt_path.EA);
 	ctx->txt_id.NO = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.NO, &ctx->txt_infos.width, &ctx->txt_infos.height);
-	verif(ctx, ctx->txt.NO, ctx->txt_path.NO);
+	verif(ctx, ctx->txt_id.NO, ctx->txt_path.NO);
 	ctx->txt_id.SO = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.SO, &ctx->txt_infos.width, &ctx->txt_infos.height);
-	verif(ctx, ctx->txt.SO, ctx->txt_path.SO);
+	verif(ctx, ctx->txt_id.SO, ctx->txt_path.SO);
 	ctx->txt_id.WE = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.WE, &ctx->txt_infos.width, &ctx->txt_infos.height);
-	verif(ctx, ctx->txt.WE, ctx->txt_path.WE);
+	verif(ctx, ctx->txt_id.WE, ctx->txt_path.WE);
 	ctx->txt.EA = mlx_get_data_addr(ctx->txt_id.EA, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
 	if (!ctx->txt.EA)
 		error("Mlx get data addr failed on", "EA");
@@ -69,14 +69,22 @@ void	init_textures(t_context *ctx)
 */
 void	deinit_textures(t_context *ctx)
 {
-	if (ctx->txt.EA)
-		mlx_destroy_image(ctx->mlx.id, ctx->txt.EA);
-	if (ctx->txt.SO)
-		mlx_destroy_image(ctx->mlx.id, ctx->txt.SO);
-	if (ctx->txt.NO)
-		mlx_destroy_image(ctx->mlx.id, ctx->txt.NO);
-	if (ctx->txt.WE)
-		mlx_destroy_image(ctx->mlx.id, ctx->txt.WE);
+	if (ctx->txt_id.EA)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.EA);
+	if (ctx->txt_id.SO)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.SO);
+	if (ctx->txt_id.NO)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.NO);
+	if (ctx->txt_id.WE)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.WE);
+	if (ctx->txt_path.EA)
+		free(ctx->txt_path.EA);
+	if (ctx->txt_path.SO)
+		free(ctx->txt_path.SO);
+	if (ctx->txt_path.NO)
+		free(ctx->txt_path.NO);
+	if (ctx->txt_path.WE)
+		free(ctx->txt_path.WE);
 }
 
 /*
@@ -87,7 +95,7 @@ static void	verif(t_context *ctx, void *loaded, void *path)
 	static int width = 0;
 	static int height = 0;
 
-	if (!loaded)
+	if (loaded == NULL)
 		error("Failed to load", path);
 	if (!width)
 	{
