@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 14:20:02 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:30:08 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,17 @@ static int	check_av(char **av)
 	int	fd;
 	
 	i = 0;
-	if (!av[0] || !av[0][0])
+	if (!av[1] || !av[1][0])
 		error("empty argument", NULL);
-	while (av[0][i])
+	while (av[1][i])
 		i++;
 	if (i < 3)
 		error("wrong argument format", NULL);
 	i -= 3;
-	// if (ft_strncmp(av[1] + i, ".cub", 3))
-	// 	error("description file must end with .cub");
+	printf ("i: %d\n", i);
+	printf ("av[1]: %s\n", av[1]);
+	if (ft_strncmp(av[1] + i - 1, ".cub", 4))
+		error("description file must end with .cub", NULL);
 	fd = open(av[1], O_RDWR);
 	if (fd == -1)
 		error("open fail, please check file name and permissions", NULL);
