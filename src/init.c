@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:19:51 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 18:13:47 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 18:43:21 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static void	verif(t_context *ctx, void *loaded, void *path);
 void	init_ctx(t_context *ctx)
 {
 	ft_bzero(ctx, sizeof(t_context));
-	ctx->player.planex = 0;
-	ctx->player.planey = 0.66;
 	exit_set_ctx(ctx);
 }
 

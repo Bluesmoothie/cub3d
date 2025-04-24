@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 15:31:36 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 18:43:31 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ typedef struct s_player
 	double	posy;
 	double	dirx;
 	double	diry;
-	double	planex;
-	double	planey;
 }	t_player;
 
 typedef struct s_map

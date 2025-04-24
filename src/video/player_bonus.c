@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:26:12 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 18:12:25 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 18:44:30 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,17 @@ void	player_moves(t_context *ctx)
 
 void	camera_moves(t_context *ctx)
 {
-	double	mem;
+	const double	mem = ctx->player.dirx;
 
 	if (ctx->kin.viewright)
 	{
-		mem = ctx->player.dirx;
 		ctx->player.dirx = ctx->player.dirx * cos(CSTEP_SIZE) - ctx->player.diry * sin (CSTEP_SIZE);
 		ctx->player.diry = mem * sin(CSTEP_SIZE) + ctx->player.diry * cos(CSTEP_SIZE);
-		mem = ctx->player.planex;
-		ctx->player.planex = ctx->player.planex * cos(CSTEP_SIZE) - ctx->player.planey * sin(CSTEP_SIZE);
-		ctx->player.planey = mem * sin(CSTEP_SIZE) + ctx->player.planey * cos(CSTEP_SIZE);
 	}
 	if (ctx->kin.viewleft)
 	{
-		mem = ctx->player.dirx;
 		ctx->player.dirx = ctx->player.dirx * cos(-CSTEP_SIZE) - ctx->player.diry * sin (-CSTEP_SIZE);
 		ctx->player.diry = mem * sin(-CSTEP_SIZE) + ctx->player.diry * cos(-CSTEP_SIZE);
-		mem = ctx->player.planex;
-		ctx->player.planex = ctx->player.planex * cos(-CSTEP_SIZE) - ctx->player.planey * sin(-CSTEP_SIZE);
-		ctx->player.planey = mem * sin(-CSTEP_SIZE) + ctx->player.planey * cos(-CSTEP_SIZE);
 	}
 }
 
@@ -75,7 +67,8 @@ static void	collision_check(t_context *ctx, char op)
 		y = ctx->player.posy;
 		return ;
 	}
-	if (out_of_map(&ctx->map, ctx->player.posx, ctx->player.posy) || ctx->map.map[(int)ctx->player.posx][(int)ctx->player.posy] != 0)
+	if (out_of_map(&ctx->map, ctx->player.posx, ctx->player.posy)
+		|| ctx->map.map[(int)(ctx->player.posx)][(int)(ctx->player.posy)] != 0)
 	{
 		ctx->player.posx = x;
 		ctx->player.posy = y;
