@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:09:03 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 13:17:55 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:21:18 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,8 @@
 
 void cast_ray(t_context *ctx) ;
 
-void	debug_map(t_context *ctx)
-{
-	printf("%p %d %d\n", ctx->map.map, ctx->map.height, ctx->map.width);
-	for (int x = 0; x < ctx->map.width; x++)
-	{
-		for(int y = 0; y <ctx->map.height; y++)
-			printf("%d", ctx->map.map[x][y]);
-		printf("\n");
-	}
-	sleep(1);
-}
-
 void	render_test(t_context *ctx)
 {
-	debug_map(ctx);
 	cast_ray(ctx);
 }
 
