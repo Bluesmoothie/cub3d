@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:24:46 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 19:45:46 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:02:45 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	fill_box(char c)
 	else if (c == 'W')
 		return (5);
 	else if (c == '\n')
-		return (-2);
+		return (-1);
 	else
 		error("Wrong tab", NULL);
 	return (0);
