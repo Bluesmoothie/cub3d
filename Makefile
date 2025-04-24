@@ -29,7 +29,6 @@ SRC_FILES		=	main				\
 					exit				\
 					init				\
 					inputs/keyboard		\
-					inputs/mouse		\
 					parse/ceiling_floor	\
 					parse/directions 	\
 					parse/parse_utils	\
@@ -56,7 +55,6 @@ BONUS_SRC_FILES = 	main				\
 					exit				\
 					init				\
 					inputs/keyboard		\
-					inputs/mouse_bonus	\
 					parse/ceiling_floor	\
 					parse/directions 	\
 					parse/parse_utils	\
