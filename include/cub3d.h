@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 15:24:47 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 19:29:09 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@
 # include "parse.h"
 # include "inputs.h"
 
-# define PSTEP_SIZE		1.0/16.0
-# define CSTEP_SIZE		360/60
+# define PSTEP_SIZE		0.0625
+# define CSTEP_SIZE		6.0
+# define MCSTEP_SIZE	0.01
 
 //	main.c
 

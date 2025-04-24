@@ -6,13 +6,14 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:26:12 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 18:44:30 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 19:28:29 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static void	collision_check(t_context *ctx, char op);
+static void	mouse_camera_moves(t_context *ctx);
 
 void	player_moves(t_context *ctx)
 {
@@ -54,6 +55,7 @@ void	camera_moves(t_context *ctx)
 		ctx->player.dirx = ctx->player.dirx * cos(-CSTEP_SIZE) - ctx->player.diry * sin (-CSTEP_SIZE);
 		ctx->player.diry = mem * sin(-CSTEP_SIZE) + ctx->player.diry * cos(-CSTEP_SIZE);
 	}
+	mouse_camera_moves(ctx);
 }
 
 static void	collision_check(t_context *ctx, char op)
@@ -72,5 +74,23 @@ static void	collision_check(t_context *ctx, char op)
 	{
 		ctx->player.posx = x;
 		ctx->player.posy = y;
+	}
+}
+
+static void	mouse_camera_moves(t_context *ctx)
+{
+	const double	mem = ctx->player.dirx;
+	static int		x = 0;
+	static int		y = 0;
+	double			movx;
+
+	mlx_mouse_get_pos(ctx->mlx.id, ctx->mlx.win, &x, &y);
+	movx = (double)(x - WWIDTH / 2);
+	if (movx)
+		mlx_mouse_move(ctx->mlx.id, ctx->mlx.win, WWIDTH / 2, WHEIGHT / 2);
+	if (movx)
+	{
+		ctx->player.dirx = ctx->player.dirx * cos(-MCSTEP_SIZE * movx) - ctx->player.diry * sin (-MCSTEP_SIZE * movx);
+		ctx->player.diry = mem * sin(-MCSTEP_SIZE * movx) + ctx->player.diry * cos(-MCSTEP_SIZE * movx);
 	}
 }

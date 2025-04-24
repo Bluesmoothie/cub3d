@@ -50,7 +50,7 @@ DEPS 			= 	$(addprefix $(BUILD_DIR), $(addsuffix .d, $(SRC_FILES)))
 
 #			BONUS
 
-BONUS_SRC_FILES = 	main				\
+BONUS_SRC_FILES = 	main_bonus			\
 					error				\
 					exit				\
 					init				\
@@ -64,7 +64,7 @@ BONUS_SRC_FILES = 	main				\
 					parse/check_map		\
 					parse/init_player	\
 					video/color			\
-					video/mlx			\
+					video/mlx_bonus		\
 					video/player_bonus	\
 					video/raycasting	\
 					video/render		\
