@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 17:17:52 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 18:09:22 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # define WTITLE		"CUB3D"
 
 # include "struct.h"
+
+enum	ecol_codes
+{
+	COL_STORE,
+	COL_CHECK
+};
 
 //	video/color.c
 int		get_bgcolor(int color[3]);
