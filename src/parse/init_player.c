@@ -6,14 +6,13 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:32 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 14:20:31 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:59:52 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "parse.h"
+#include "parse.h"
 
 void	fill_player_dir(t_context *ctx, int pos);
-
 
 void	init_player(t_context *ctx)
 {
@@ -60,5 +59,5 @@ void	fill_player_dir(t_context *ctx, int pos)
 	{
 		ctx->player.dirx = 0.0;
 		ctx->player.diry = -1.0;
-	}	
+	}
 }

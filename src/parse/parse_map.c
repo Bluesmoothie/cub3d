@@ -6,19 +6,19 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:23:58 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 19:40:58 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:58:05 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "parse.h"
+#include "parse.h"
 
-static char *go_to_first_map_line(int fd);
+static char	*go_to_first_map_line(int fd);
 static char	**fill_char_tab(int fd);
 static char	**fill_char_tab_2(char **charmap, int fd, char *current, int max);
 
 void	fill_map(int fd, t_context *ctx)
 {
-	char 	**charmap;
+	char	**charmap;
 	int		i;
 
 	charmap = fill_char_tab(fd);
@@ -32,7 +32,7 @@ void	fill_map(int fd, t_context *ctx)
 	{
 		ctx->map.map[i] = ft_calloc(ctx->map.width, sizeof(int));
 		if (!ctx->map.map[i])
-		error("malloc error", NULL);
+			error("malloc error", NULL);
 		i++;
 	}
 	fill_int_tab(ctx, charmap);
@@ -44,8 +44,8 @@ static char	**fill_char_tab(int fd)
 	char	**charmap;
 	int		i;
 	int		max;
-	
-	charmap = malloc(11 * sizeof (char *));
+
+	charmap = malloc(11 * sizeof(char *));
 	if (!charmap)
 		error("malloc error", NULL);
 	current = go_to_first_map_line(fd);
@@ -60,7 +60,7 @@ static char	**fill_char_tab(int fd)
 static char	**fill_char_tab_2(char **charmap, int fd, char *current, int max)
 {
 	int	i;
-	
+
 	i = 0;
 	while (1)
 	{
@@ -76,7 +76,7 @@ static char	**fill_char_tab_2(char **charmap, int fd, char *current, int max)
 					free(current);
 				charmap[i] = NULL;
 				return (charmap);
-			}	
+			}
 		}
 		charmap = ft_realloc_tab(charmap, max, 10);
 		max += 10;
@@ -84,11 +84,11 @@ static char	**fill_char_tab_2(char **charmap, int fd, char *current, int max)
 	return (charmap);
 }
 
-static char *go_to_first_map_line(int fd)
+static char	*go_to_first_map_line(int fd)
 {
 	char	*current;
 	int		i;
-	
+
 	current = NULL;
 	while (1)
 	{
@@ -104,4 +104,3 @@ static char *go_to_first_map_line(int fd)
 			return (current);
 	}
 }
-

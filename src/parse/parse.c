@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 13:37:14 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:58:17 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	ceiling_floor(char *current, int pos, t_context *ctx);
 
 void	parse(int ac, char **av, t_context *ctx)
 {
-	int			fd;
-	
+	int	fd;
+
 	if (ac != 2)
 		error("wrong number of arguments", NULL);
 	fd = check_av(av);
@@ -33,7 +33,7 @@ static int	check_av(char **av)
 {
 	int	i;
 	int	fd;
-	
+
 	i = 0;
 	if (!av[1] || !av[1][0])
 		error("empty argument", NULL);
@@ -52,9 +52,9 @@ static int	check_av(char **av)
 
 static void	fill_paths(int fd, t_context *ctx)
 {
-	char		*current;
-	int			i;
-	int			j;
+	char	*current;
+	int		i;
+	int		j;
 
 	j = 0;
 	while (1)

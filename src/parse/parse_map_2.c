@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:24:46 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 11:02:45 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:59:40 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	fill_box(char c)
 
 int	max_height(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])
@@ -75,7 +75,7 @@ int	max_width(char **tab)
 	int	i;
 	int	j;
 	int	max;
-	
+
 	i = 0;
 	max = 0;
 	while (tab[i])

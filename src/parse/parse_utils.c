@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:27:17 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 20:28:13 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:25:59 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**ft_realloc_tab(char **tab, int max, int size)
 {
 	char	**newtab;
 	int		i;
-	
+
 	newtab = malloc((max + size) * sizeof(char *));
 	// if (!newtab)
 	// 	free_tab_exit(tab);
@@ -48,7 +48,7 @@ char	**ft_realloc_tab(char **tab, int max, int size)
 void	check_first_and_last_line(t_map *map)
 {
 	int	i;
-	
+
 	i = -1;
 	while (++i < map->width)
 	{
@@ -62,4 +62,17 @@ void	check_first_and_last_line(t_map *map)
 			- 1][i] != 1)
 			error("wrong map", NULL);
 	}
+}
+
+void	free_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->height)
+	{
+		free(map->map[i]);
+		i++;
+	}
+	free(map);
 }

@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:29:39 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 13:47:54 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:26:15 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void 	directions(char *current, int i, t_textures *txt);
 int		forward_char(char *str, char sep);
 char	**ft_realloc_tab(char **tab, int max, int size);
 void	check_first_and_last_line(t_map *map);
+void	free_map(t_map *map);
 
 //	ceiling_floor.c
 void 	ceiling(char *current, int pos, int *tab);

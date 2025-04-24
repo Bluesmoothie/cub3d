@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:15:10 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 20:30:23 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:57:46 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static void	check_first_and_last_column(t_map *map)
 	i = 0;
 	while (i < map->height)
 	{
-		if (map->map[i][map->width -1] > -1 && map->map[i][map->width -1] != 1)
+		if (map->map[i][map->width - 1] > -1 && map->map[i][map->width
+			- 1] != 1)
 			error("wrong map", NULL);
 		i++;
 	}
@@ -64,13 +65,13 @@ static void	check_zeros_and_perso(t_map *map)
 {
 	int	i;
 	int	j;
-	
+
 	i = 1;
 	printf("HERE\n");
 	while (i < map->height - 1)
 	{
 		j = 1;
-		while (j < map->width -1)
+		while (j < map->width - 1)
 		{
 			if (map->map[i][j] == 0)
 			{
@@ -84,21 +85,21 @@ static void	check_zeros_and_perso(t_map *map)
 
 static void	look_for_hole(t_map *map, int i, int j)
 {
-	if (map->map[i-1][j-1] != 0 && map->map[i-1][j-1] < 1)
-		error("map error", NULL);				
-	if (map->map[i][j-1] != 0 && map->map[i][j-1] < 1)
+	if (map->map[i - 1][j - 1] != 0 && map->map[i - 1][j - 1] < 1)
 		error("map error", NULL);
-	if (map->map[i+1][j-1] != 0 && map->map[i+1][j-1] < 1)
+	if (map->map[i][j - 1] != 0 && map->map[i][j - 1] < 1)
 		error("map error", NULL);
-	if (map->map[i-1][j] != 0 && map->map[i-1][j] < 1)
+	if (map->map[i + 1][j - 1] != 0 && map->map[i + 1][j - 1] < 1)
 		error("map error", NULL);
-	if (map->map[i+1][j] != 0 && map->map[i+1][j] < 1)
+	if (map->map[i - 1][j] != 0 && map->map[i - 1][j] < 1)
 		error("map error", NULL);
-	if (map->map[i-1][j+1] != 0 && map->map[i-1][j+1] < 1)
+	if (map->map[i + 1][j] != 0 && map->map[i + 1][j] < 1)
 		error("map error", NULL);
-	if (map->map[i][j+1] != 0 && map->map[i][j+1] < 1)
+	if (map->map[i - 1][j + 1] != 0 && map->map[i - 1][j + 1] < 1)
 		error("map error", NULL);
-	if (map->map[i+1][j+1] != 0 && map->map[i+1][j+1] < 1)
+	if (map->map[i][j + 1] != 0 && map->map[i][j + 1] < 1)
+		error("map error", NULL);
+	if (map->map[i + 1][j + 1] != 0 && map->map[i + 1][j + 1] < 1)
 		error("map error", NULL);
 }
 
@@ -113,7 +114,7 @@ static void	check_perso(t_map *map)
 	while (i < map->height - 1)
 	{
 		j = 1;
-		while (j < map->width -1)
+		while (j < map->width - 1)
 		{
 			if (map->map[i][j] > 1 && !is_already_here)
 				is_already_here = 1;
@@ -125,9 +126,8 @@ static void	check_perso(t_map *map)
 	}
 }
 
-
 // if (map->map[i-1][j-1] < 0)
-// error("map error", NULL);				
+// error("map error", NULL);
 // else if (map->map[i][j-1] < 0)
 // error("map error", NULL);
 // else if (map->map[i+1][j-1] < 0)
