@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:15:10 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 14:57:46 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:07:08 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,6 @@ static void	check_perso(t_map *map);
 
 void	check_map(t_map *map)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			printf("%d", map->map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
 	check_first_and_last_line(map);
 	check_first_and_last_column(map);
 	check_zeros_and_perso(map);
@@ -67,7 +52,6 @@ static void	check_zeros_and_perso(t_map *map)
 	int	j;
 
 	i = 1;
-	printf("HERE\n");
 	while (i < map->height - 1)
 	{
 		j = 1;
@@ -125,20 +109,3 @@ static void	check_perso(t_map *map)
 		i++;
 	}
 }
-
-// if (map->map[i-1][j-1] < 0)
-// error("map error", NULL);
-// else if (map->map[i][j-1] < 0)
-// error("map error", NULL);
-// else if (map->map[i+1][j-1] < 0)
-// error("map error", NULL);
-// else if (map->map[i-1][j] < 0)
-// error("map error", NULL);
-// else if (map->map[i+1][j] < 0)
-// error("map error", NULL);
-// else if (map->map[i-1][j+1] < 0)
-// error("map error", NULL);
-// else if (map->map[i][j+1] < 0)
-// error("map error", NULL);
-// else if (map->map[i+1][j+1] < 0)
-// error("map error", NULL);
