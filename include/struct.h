@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 12:32:20 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:49:04 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 # define STRUCT_H
 
 # include <stdbool.h>
+
+typedef struct s_raycast
+{
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+	int 	mapX;
+	int 	mapY;
+	int 	stepX;
+	int 	stepY;
+	bool 	side;
+}	t_raycast;
 
 typedef struct s_player
 {

@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 18:51:13 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:26:34 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	render_pixel(int *frame, int color, int x, int y)
 static void	render_frame(t_context *ctx)
 {
 	render_bg(ctx);
-	render_test(ctx);
+	ray_cast(ctx);
 }
 
 static void	render_bg(t_context *ctx)
