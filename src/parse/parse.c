@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 13:18:28 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:19:16 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	parse(int ac, char **av, t_context *ctx)
 		error("wrong number of arguments", NULL);
 	fd = check_av(av);
 	fill_paths(fd, ctx);
+	fill_map(fd, ctx);
+	check_map(&ctx->map);
 }
 
 static int	check_av(char **av)
@@ -39,8 +41,6 @@ static int	check_av(char **av)
 	if (i < 3)
 		error("wrong argument format", NULL);
 	i -= 3;
-	printf ("i: %d\n", i);
-	printf ("av[1]: %s\n", av[1]);
 	if (ft_strncmp(av[1] + i - 1, ".cub", 4))
 		error("description file must end with .cub", NULL);
 	fd = open(av[1], O_RDWR);
@@ -71,7 +71,7 @@ static void	fill_paths(int fd, t_context *ctx)
 		else if (j < 7)
 			ceiling_floor(current, i, ctx);
 		free(current);
-		if (j == 7)
+		if (j == 6)
 			break ;
 	}
 }
@@ -85,5 +85,3 @@ static void	ceiling_floor(char *current, int pos, t_context *ctx)
 	else
 		error("problem in floor or ceiling color", NULL);
 }
-
-// floodfill
