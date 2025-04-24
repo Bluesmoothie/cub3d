@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:27:17 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 17:51:11 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:10:04 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ char	**ft_realloc_tab(char **tab, int max, int size)
 	int		i;
 
 	newtab = malloc((max + size) * sizeof(char *));
-	// if (!newtab)
-	// 	free_tab_exit(tab);
+	if (!newtab)
+		error("malloc error", NULL);
 	i = 0;
 	while (i < max)
 	{

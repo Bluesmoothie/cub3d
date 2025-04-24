@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:32 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 14:59:52 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:18:27 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_player(t_context *ctx)
 				ctx->player.posx = (double)i;
 				ctx->player.posy = (double)j;
 				fill_player_dir(ctx, ctx->map.map[i][j]);
+				ctx->map.map[i][j] = 0;
 				return ;
 			}
 			j++;
