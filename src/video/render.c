@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 15:33:59 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/23 18:51:13 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 static void	render_frame(t_context *ctx);
 static void	render_bg(t_context *ctx);
-static void	render_pixel(int *frame, int color, int x, int y);
-
-static void	DEBUG(t_player player)
-{
-	printf("X=%f Y=%f Cam=%d\n", player.x, player.y, player.camera);
-}
 
 int	renderer(t_context *ctx)
 {
@@ -30,16 +24,23 @@ int	renderer(t_context *ctx)
 	{
 		frame++;
 		player_moves(ctx);
-		DEBUG(ctx->player);
+		camera_moves(ctx);
 		render_frame(ctx);
 		mlx_put_image_to_window(ctx->mlx.id, ctx->mlx.win, ctx->mlx.img, 0, 0);
 	}
 	return (timer++);
 }
 
+void	render_pixel(int *frame, int color, int x, int y)
+{
+	if (x <= WWIDTH && y <= WHEIGHT)
+		frame[x + y * WWIDTH] = color;
+}
+
 static void	render_frame(t_context *ctx)
 {
 	render_bg(ctx);
+	render_test(ctx);
 }
 
 static void	render_bg(t_context *ctx)
@@ -68,10 +69,4 @@ static void	render_bg(t_context *ctx)
 		}
 		y++;
 	}
-}
-
-static void	render_pixel(int *frame, int color, int x, int y)
-{
-	if (x <= WWIDTH && y <= WHEIGHT)
-		frame[x + y * WWIDTH] = color;
 }

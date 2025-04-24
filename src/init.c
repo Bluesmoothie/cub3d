@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:19:51 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 15:03:28 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 12:34:30 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ static void	verif(t_context *ctx, void *loaded, void *path);
 void	init_ctx(t_context *ctx)
 {
 	ft_bzero(ctx, sizeof(t_context));
+	ctx->player.posx = 2;
+	ctx->player.posy = 2;
+	ctx->player.dirx = -1;
+	ctx->player.diry = 0;
+	ctx->player.planex = 0;
+	ctx->player.planey = 0.66;
 	exit_set_ctx(ctx);
 }
 
@@ -52,16 +58,16 @@ void	init_textures(t_context *ctx)
 	verif(ctx, ctx->txt_id.so, ctx->txt_path.so);
 	ctx->txt_id.we = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.we, &ctx->txt_infos.width, &ctx->txt_infos.height);
 	verif(ctx, ctx->txt_id.we, ctx->txt_path.we);
-	ctx->txt.ea = mlx_get_data_addr(ctx->txt_id.ea, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
+	ctx->txt.ea = (int*)mlx_get_data_addr(ctx->txt_id.ea, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
 	if (!ctx->txt.ea)
 		error("Mlx get data addr failed on", "ea");
-	ctx->txt.no = mlx_get_data_addr(ctx->txt_id.no, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
+	ctx->txt.no = (int*)mlx_get_data_addr(ctx->txt_id.no, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
 	if (!ctx->txt.no)
 		error("Mlx get data addr failed on", "no");
-	ctx->txt.so = mlx_get_data_addr(ctx->txt_id.so, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
+	ctx->txt.so = (int*)mlx_get_data_addr(ctx->txt_id.so, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
 	if (!ctx->txt.so)
 		error("Mlx get data addr failed on", "so");
-	ctx->txt.we = mlx_get_data_addr(ctx->txt_id.we, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
+	ctx->txt.we = (int*)mlx_get_data_addr(ctx->txt_id.we, &ctx->txt_infos.bpp, &ctx->txt_infos.line_size, &ctx->txt_infos.endian);
 	if (!ctx->txt.we)
 		error("Mlx get data addr failed on", "we");
 }
