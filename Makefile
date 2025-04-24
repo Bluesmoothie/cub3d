@@ -36,6 +36,7 @@ SRC_FILES		=	main				\
 					parse/parse_map		\
 					parse/parse_map_2	\
 					parse/check_map		\
+					parse/init_player	\
 					video/color			\
 					video/mlx			\
 					video/player		\

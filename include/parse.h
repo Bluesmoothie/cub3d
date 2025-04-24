@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:29:39 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 20:28:29 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:47:54 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,6 @@ void	fill_int_tab(t_context *ctx, char **charmap);
 
 //	check_map.c
 void	check_map(t_map *map);
+
+//	init_player.c
+void	init_player(t_context *ctx);
