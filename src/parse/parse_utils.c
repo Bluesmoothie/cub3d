@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:27:17 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 17:25:59 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:34:12 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,4 @@ void	free_map(t_map *map)
 		free(map->map[i]);
 		i++;
 	}
-	free(map);
 }
