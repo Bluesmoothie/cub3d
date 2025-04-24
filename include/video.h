@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 19:01:59 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:26:22 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	camera_moves(t_context *ctx);
 void	init_video(t_mlx *mlx);
 void	deinit_video(t_mlx mlx);
 
+//	video/raycasting.c
+void	ray_cast(t_context *ctx);
+
 //	video/render.c
 int		renderer(t_context *ctx);
 void	render_pixel(int *frame, int color, int x, int y);
-
-
-void	render_test(t_context *ctx);
 
 #endif
