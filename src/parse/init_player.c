@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:32 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 13:56:54 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:20:31 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,22 @@ void	fill_player_dir(t_context *ctx, int pos)
 {
 	if (pos == 2)
 	{
-		ctx->player.dirx = 0;
-		ctx->player.diry = 1;
+		ctx->player.dirx = -1.0;
+		ctx->player.diry = 0.0;
 	}
 	else if (pos == 3)
 	{
-		ctx->player.dirx = 0;
-		ctx->player.diry = -1;
+		ctx->player.dirx = 1.0;
+		ctx->player.diry = 0.0;
 	}
 	else if (pos == 4)
 	{
-		ctx->player.dirx = 1;
-		ctx->player.diry = 0;
+		ctx->player.dirx = 0.0;
+		ctx->player.diry = 1.0;
 	}
 	else if (pos == 5)
 	{
-		ctx->player.dirx = -1;
-		ctx->player.diry = 0;
+		ctx->player.dirx = 0.0;
+		ctx->player.diry = -1.0;
 	}	
 }
