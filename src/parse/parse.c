@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/23 14:30:08 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:18:28 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	parse(int ac, char **av, t_context *ctx)
 	if (ac != 2)
 		error("wrong number of arguments", NULL);
 	fd = check_av(av);
-	ft_bzero(&ctx->txt_path, 4 * sizeof(void *));
 	fill_paths(fd, ctx);
 }
 

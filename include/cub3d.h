@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 15:38:39 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:10:34 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <math.h>
 
 # include "mlx.h"
 
@@ -30,7 +31,7 @@
 # include "inputs.h"
 
 # define PSTEP_SIZE		1.0/16.0
-# define CSTEP_SIZE		360/30
+# define CSTEP_SIZE		360.0/60.0
 
 //	main.c
 

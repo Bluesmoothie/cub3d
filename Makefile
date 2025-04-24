@@ -37,6 +37,7 @@ SRC_FILES		=	main				\
 					video/mlx			\
 					video/player		\
 					video/render		\
+					video/test			\
 
 SRC 			= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 			= 	$(addprefix $(BUILD_DIR), $(addsuffix .o, $(SRC_FILES)))

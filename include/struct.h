@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 15:25:10 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 12:32:20 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@
 
 typedef struct s_player
 {
-	float	x;
-	float	y;
-	int		camera;
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
 }	t_player;
 
 typedef struct s_map
@@ -70,10 +73,18 @@ typedef struct s_textures
 	void	*ea;
 }	t_textures;
 
+typedef struct s_txtdata
+{
+	int		*no;
+	int		*so;
+	int		*we;
+	int		*ea;
+}	t_txtdata;
+
 typedef struct s_context
 {
 	t_mlx		mlx;
-	t_textures	txt;
+	t_txtdata	txt;
 	t_textures	txt_id;
 	t_textures	txt_path;
 	int			floor[3];
