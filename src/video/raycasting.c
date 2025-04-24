@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:11:27 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 13:56:14 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 14:18:51 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static void	found_collision(t_map *map, t_raycast *rc)
 			rc->mapY += rc->stepY;
 			rc->side = true;
 		}
-		if (map->map[rc->mapY][rc->mapX] > 0)
+		if (map->map[rc->mapX][rc->mapY] == 1)
 			break ;
 	}
 }
