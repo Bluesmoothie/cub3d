@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:11:27 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 15:09:58 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 17:14:33 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static t_raycast	update_rc(t_player *player, int x);
 static void			get_ray_dir(t_player *player, t_raycast *rc);
 static void			found_collision(t_map *map, t_raycast *rc);
+static bool			out_of_map(t_map *map, int x, int y);
 
 void	ray_cast(t_context *ctx)
 {
@@ -38,7 +39,8 @@ void	ray_cast(t_context *ctx)
 		rc.ey = rc.lineheight / 2 + WHEIGHT / 2;
 		if (rc.ey >= WHEIGHT)
 			rc.ey = WHEIGHT - 1;
-		render_texture(ctx, rc, x);
+		if (!out_of_map(&ctx->map, rc.mapx, rc.mapy))
+			render_texture(ctx, rc, x);
 	x++;	
 	}
 }
@@ -97,7 +99,12 @@ static void	found_collision(t_map *map, t_raycast *rc)
 			rc->mapy += rc->stepy;
 			rc->side = true;
 		}
-		if (map->map[rc->mapx][rc->mapy] == 1)
+		if (out_of_map(map, rc->mapx, rc->mapy) || map->map[rc->mapx][rc->mapy] == 1)
 			break ;
 	}
+}
+
+static bool	out_of_map(t_map *map, int x, int y)
+{
+	return (x >= map->height || y >= map->width || x < 0 || y < 0);
 }
