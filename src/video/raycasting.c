@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:11:27 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 14:18:51 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 14:21:54 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void	ray_cast(t_context *ctx)
 			rc.perpWallDist = (rc.sideDistX - rc.deltaDistX);
 		else 
 			rc.perpWallDist = (rc.sideDistY - rc.deltaDistY);
-		int lineHeight = (int)(WHEIGHT / rc.perpWallDist);
-		int drawStart = -lineHeight / 2 + WHEIGHT / 2;
-		if (drawStart < 0)
-			drawStart = 0;
-		int drawEnd = lineHeight / 2 + WHEIGHT / 2;
-		if (drawEnd >= WHEIGHT)
-			drawEnd = WHEIGHT - 1;
+		rc.lineHeight = (int)(WHEIGHT / rc.perpWallDist);
+		rc.drawStart = -rc.lineHeight / 2 + WHEIGHT / 2;
+		if (rc.drawStart < 0)
+			rc.drawStart = 0;
+		rc.drawEnd = rc.lineHeight / 2 + WHEIGHT / 2;
+		if (rc.drawEnd >= WHEIGHT)
+			rc.drawEnd = WHEIGHT - 1;
 		for (int y = 0; y < WHEIGHT; y++)
-			if (y >= drawStart && y <= drawEnd)
+			if (y >= rc.drawStart && y <= rc.drawEnd)
 				render_pixel(ctx->mlx.img_data, 0x00FFFFFF, x, y);
 	x++;	
 	}
