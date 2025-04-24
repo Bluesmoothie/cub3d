@@ -1,6 +1,7 @@
-.PHONY			:	all clean fclean re norm FORCE
+.PHONY			:	all clean fclean re norm FORCE bonus
 
 NAME			=	cub3d
+BONUS_NAME		=	cub3d_bonus
 
 #			GCC
 
@@ -48,9 +49,41 @@ SRC 			= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 			= 	$(addprefix $(BUILD_DIR), $(addsuffix .o, $(SRC_FILES)))
 DEPS 			= 	$(addprefix $(BUILD_DIR), $(addsuffix .d, $(SRC_FILES)))
 
+#			BONUS
+
+BONUS_SRC_FILES = 	main				\
+					error				\
+					exit				\
+					init				\
+					inputs/keyboard		\
+					inputs/mouse_bonus	\
+					parse/ceiling_floor	\
+					parse/directions 	\
+					parse/parse_utils	\
+					parse/parse			\
+					parse/parse_map		\
+					parse/parse_map_2	\
+					parse/check_map		\
+					parse/init_player	\
+					video/color			\
+					video/mlx			\
+					video/player_bonus	\
+					video/raycasting	\
+					video/render		\
+					video/utils			\
+
+BONUS_SRC 		= 	$(addprefix $(BONUS_SRC_DIR), $(addsuffix .c, $(BONUS_SRC_FILES)))
+BONUS_OBJ 		= 	$(addprefix $(BUILD_DIR), $(addsuffix .o, $(BONUS_SRC_FILES)))
+BONUS_DEPS 		= 	$(addprefix $(BUILD_DIR), $(addsuffix .d, $(BONUS_SRC_FILES)))
+
 #			RULES
 
 all				:	$(NAME)
+
+bonus			:	$(BONUS_NAME)
+
+$(BONUS_NAME)	:	$(BUILD_DIR) $(BONUS_OBJ) $(LIBFT_A) $(MLX_A)
+				$(CC) $(CFLAGS) $(BONUS_OBJ) $(LIBS) -o $(BONUS_NAME) 
 
 $(NAME)			:	$(BUILD_DIR) $(OBJ) $(LIBFT_A) $(MLX_A)
 				$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME) 
@@ -73,6 +106,7 @@ $(BUILD_DIR)%.o	: $(SRC_DIR)%.c
 			$(CC) $(CFLAGS) -c $< -o $@
 
 -include $(DEPS)
+-include $(BONUS_DEPS)
 
 clean			:
 				rm -rf $(BUILD_DIR)
