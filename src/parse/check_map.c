@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:15:10 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 14:57:46 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:44:11 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static void	check_zeros_and_perso(t_map *map)
 	int	j;
 
 	i = 1;
-	printf("HERE\n");
 	while (i < map->height - 1)
 	{
 		j = 1;

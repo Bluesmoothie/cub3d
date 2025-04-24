@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:24:46 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 14:59:40 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:48:23 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	fill_int_tab(t_context *ctx, char **charmap)
 		}
 		i++;
 	}
+	free_chartab(charmap);
 }
 
 static int	fill_box(char c)
