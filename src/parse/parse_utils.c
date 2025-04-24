@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:27:17 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 17:48:07 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:51:11 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	free_map(t_map *map)
 		free(map->map[i]);
 		i++;
 	}
+	free(map->map);
 }
 
 void	free_chartab(char **chartab)

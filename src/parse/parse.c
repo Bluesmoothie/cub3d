@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 14:58:17 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:04:36 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	parse(int ac, char **av, t_context *ctx)
 	fill_map(fd, ctx);
 	check_map(&ctx->map);
 	init_player(ctx);
+	while (get_next_line(fd))
+		;
 }
 
 static int	check_av(char **av)
