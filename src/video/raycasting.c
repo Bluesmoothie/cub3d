@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:11:27 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 14:21:54 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 14:56:30 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ void	ray_cast(t_context *ctx)
 		get_ray_dir(&ctx->player, &rc);
 		found_collision(&ctx->map, &rc);
 		if (!rc.side)
-			rc.perpWallDist = (rc.sideDistX - rc.deltaDistX);
+			rc.walldist = (rc.sidedistX - rc.deltadistX);
 		else 
-			rc.perpWallDist = (rc.sideDistY - rc.deltaDistY);
-		rc.lineHeight = (int)(WHEIGHT / rc.perpWallDist);
-		rc.drawStart = -rc.lineHeight / 2 + WHEIGHT / 2;
-		if (rc.drawStart < 0)
-			rc.drawStart = 0;
-		rc.drawEnd = rc.lineHeight / 2 + WHEIGHT / 2;
-		if (rc.drawEnd >= WHEIGHT)
-			rc.drawEnd = WHEIGHT - 1;
+			rc.walldist = (rc.sidedistY - rc.deltadistY);
+		rc.lineheight = (int)(WHEIGHT / rc.walldist);
+		rc.sy = -rc.lineheight / 2 + WHEIGHT / 2;
+		if (rc.sy < 0)
+			rc.sy = 0;
+		rc.ey = rc.lineheight / 2 + WHEIGHT / 2;
+		if (rc.ey >= WHEIGHT)
+			rc.ey = WHEIGHT - 1;
 		for (int y = 0; y < WHEIGHT; y++)
-			if (y >= rc.drawStart && y <= rc.drawEnd)
+			if (y >= rc.sy && y <= rc.ey)
 				render_pixel(ctx->mlx.img_data, 0x00FFFFFF, x, y);
 	x++;	
 	}
@@ -50,10 +50,10 @@ static t_raycast	update_rc(t_player *player, int x)
 	t_raycast	rc;
 
 	rc.cameraX = 2 * x / (double)WWIDTH - 1;
-	rc.rayDirX = player->dirx + player->diry * rc.cameraX;
-	rc.rayDirY = player->diry - player->dirx * rc.cameraX;
-	rc.deltaDistX = fabs(1 / rc.rayDirX);
-	rc.deltaDistY = fabs(1 / rc.rayDirY);
+	rc.raydirX = player->dirx + player->diry * rc.cameraX;
+	rc.raydirY = player->diry - player->dirx * rc.cameraX;
+	rc.deltadistX = fabs(1 / rc.raydirX);
+	rc.deltadistY = fabs(1 / rc.raydirY);
 	rc.mapX = (int)player->posx;
 	rc.mapY = (int)player->posy;
 	return (rc);
@@ -61,25 +61,25 @@ static t_raycast	update_rc(t_player *player, int x)
 
 static void	get_ray_dir(t_player *player, t_raycast *rc)
 {
-	if (rc->rayDirX < 0)
+	if (rc->raydirX < 0)
 	{
 		rc->stepX = -1;
-		rc->sideDistX = (player->posx - rc->mapX) * rc->deltaDistX;
+		rc->sidedistX = (player->posx - rc->mapX) * rc->deltadistX;
 	}
 	else
 	{
 		rc->stepX = 1;
-		rc->sideDistX = (rc->mapX + 1.0 - player->posx) * rc->deltaDistX;
+		rc->sidedistX = (rc->mapX + 1.0 - player->posx) * rc->deltadistX;
 	}
-	if (rc->rayDirY < 0)
+	if (rc->raydirY < 0)
 	{
 		rc->stepY = -1;
-		rc->sideDistY = (player->posy - rc->mapY) * rc->deltaDistY;
+		rc->sidedistY = (player->posy - rc->mapY) * rc->deltadistY;
 	}
 	else
 	{
 		rc->stepY = 1;
-		rc->sideDistY = (rc->mapY + 1.0 - player->posy) * rc->deltaDistY;
+		rc->sidedistY = (rc->mapY + 1.0 - player->posy) * rc->deltadistY;
 	}
 }
 
@@ -87,15 +87,15 @@ static void	found_collision(t_map *map, t_raycast *rc)
 {
 	while (1)
 	{
-		if (rc->sideDistX < rc->sideDistY)
+		if (rc->sidedistX < rc->sidedistY)
 		{
-			rc->sideDistX += rc->deltaDistX;
+			rc->sidedistX += rc->deltadistX;
 			rc->mapX += rc->stepX;
 			rc->side = false;
 		}
 		else
 		{
-			rc->sideDistY += rc->deltaDistY;
+			rc->sidedistY += rc->deltadistY;
 			rc->mapY += rc->stepY;
 			rc->side = true;
 		}

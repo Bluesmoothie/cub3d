@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 14:21:27 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 14:54:58 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 typedef struct s_raycast
 {
 	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	int 	lineHeight;
-	int 	drawStart;
-	int 	drawEnd;
+	double	raydirX;
+	double	raydirY;
+	double	sidedistX;
+	double	sidedistY;
+	double	deltadistX;
+	double	deltadistY;
+	double	walldist;
+	int 	lineheight;
+	int 	sy;
+	int 	ey;
 	int 	mapX;
 	int 	mapY;
 	int 	stepX;
