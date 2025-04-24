@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 14:54:58 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 15:31:36 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,31 @@
 
 # include <stdbool.h>
 
+typedef struct s_rendering
+{
+	double	txtstep;
+	double	txty;
+	int		y;
+	int		txtx;
+}	t_rendering;
+
 typedef struct s_raycast
 {
-	double	cameraX;
-	double	raydirX;
-	double	raydirY;
-	double	sidedistX;
-	double	sidedistY;
-	double	deltadistX;
-	double	deltadistY;
+	double	camerax;
+	double	raydirx;
+	double	raydiry;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
 	double	walldist;
 	int 	lineheight;
 	int 	sy;
 	int 	ey;
-	int 	mapX;
-	int 	mapY;
-	int 	stepX;
-	int 	stepY;
+	int 	mapx;
+	int 	mapy;
+	int 	stepx;
+	int 	stepy;
 	bool 	side;
 }	t_raycast;
 

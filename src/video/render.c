@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 13:26:34 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/24 16:50:35 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,26 @@ void	render_pixel(int *frame, int color, int x, int y)
 {
 	if (x <= WWIDTH && y <= WHEIGHT)
 		frame[x + y * WWIDTH] = color;
+}
+
+void	render_texture(t_context *ctx, t_raycast rc, int screenx)
+{
+	t_rendering	render;
+	int			*txt;
+
+	render.txtstep = 1.0 * ctx->txt_infos.height / rc.lineheight;
+	render.txty = (rc.sy - WHEIGHT / 2 + rc.lineheight / 2) * render.txtstep;
+	render.y = rc.sy;
+	render.txtx = calc_txtx(&rc, &ctx->txt_infos, &ctx->player);
+	txt = get_dir(&rc, &ctx->txt);
+	while (render.y <= rc.ey)
+	{
+		render_pixel(ctx->mlx.img_data, txt[render.txtx + (int)render.txty * ctx->txt_infos.width], screenx, render.y);
+		render.txty += render.txtstep;
+		if ((int)render.txty >= ctx->txt_infos.height)
+			render.txty = (double)(ctx->txt_infos.height - 1);
+		render.y++;
+	}
 }
 
 static void	render_frame(t_context *ctx)
