@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 16:50:35 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 11:37:31 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	renderer(t_context *ctx)
 	static size_t	timer = 0;
 	static size_t	frame = 0;
 
+	if (!timer)
+	{
+		ctx->ceiling[0] = get_bgcolor(ctx->ceiling);
+		ctx->floor[0] = get_bgcolor(ctx->floor);
+	}
 	if (!(timer % 200))
 	{
 		frame++;
@@ -74,7 +79,7 @@ static void	render_bg(t_context *ctx)
 		x = 0;
 		while (x < WWIDTH)
 		{
-			render_pixel(ctx->mlx.img_data, get_bgcolor(ctx->ceiling), x, y);
+			render_pixel(ctx->mlx.img_data, ctx->ceiling[0], x, y);
 			x++;
 		}
 		y++;
@@ -84,7 +89,7 @@ static void	render_bg(t_context *ctx)
 		x = 0;
 		while (x < WWIDTH)
 		{
-			render_pixel(ctx->mlx.img_data, get_bgcolor(ctx->floor), x, y);
+			render_pixel(ctx->mlx.img_data, ctx->floor[0], x, y);
 			x++;
 		}
 		y++;
