@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:23:58 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 18:05:17 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:43:12 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,10 @@ static char	*go_to_first_map_line(int fd)
 		while (current[i] == ' ')
 			i++;
 		if (current[i] == '\n')
+		{
+			free(current);
 			continue ;
+		}
 		else
 			return (current);
 	}

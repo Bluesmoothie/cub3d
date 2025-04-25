@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 18:04:36 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:43:27 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ static void	fill_paths(int fd, t_context *ctx)
 		while (current[i] == ' ')
 			i++;
 		if (current[i] == '\n')
+		{
+			free(current);
 			continue ;
+		}
 		if (j++ < 4)
 			directions(current, i, &ctx->txt_path);
 		else if (j < 7)
