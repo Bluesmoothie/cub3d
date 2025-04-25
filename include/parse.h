@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:29:39 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 17:48:14 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:03:45 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	parse(int ac, char **av, t_context *ctx);
 
 // directions.c 
-void 	directions(char *current, int i, t_textures *txt);
+void	directions(char *current, int i, t_textures *txt);
 
 //	parse_utils.c
 int		forward_char(char *str, char sep);
@@ -28,7 +28,7 @@ void	free_map(t_map *map);
 void	free_chartab(char **chartab);
 
 //	ceiling_floor.c
-void 	ceiling(char *current, int pos, int *tab);
+void	ceiling(char *current, int pos, int *tab);
 
 //	parse_map.c
 void	fill_map(int fd, t_context *ctx);

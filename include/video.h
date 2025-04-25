@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 18:09:22 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 12:03:34 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "struct.h"
 
-enum	ecol_codes
+enum	e_col_codes
 {
 	COL_STORE,
 	COL_CHECK
@@ -44,6 +44,10 @@ void	ray_cast(t_context *ctx);
 int		renderer(t_context *ctx);
 void	render_pixel(int *frame, int color, int x, int y);
 void	render_texture(t_context *ctx, t_raycast rc, int screenx);
+
+//	video/textures.c
+void	init_textures(t_context *ctx);
+void	deinit_textures(t_context *ctx);
 
 //	video/utils.c
 int		calc_txtx(t_raycast *rc, t_txtinfos *txt, t_player *player);

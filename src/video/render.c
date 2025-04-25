@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 11:37:31 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 12:00:11 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void	render_texture(t_context *ctx, t_raycast rc, int screenx)
 	txt = get_dir(&rc, &ctx->txt);
 	while (render.y <= rc.ey)
 	{
-		render_pixel(ctx->mlx.img_data, txt[render.txtx + (int)render.txty * ctx->txt_infos.width], screenx, render.y);
+		render_pixel(ctx->mlx.img_data,
+			txt[render.txtx + (int)render.txty * ctx->txt_infos.width],
+			screenx, render.y);
 		render.txty += render.txtstep;
 		if ((int)render.txty >= ctx->txt_infos.height)
 			render.txty = (double)(ctx->txt_infos.height - 1);

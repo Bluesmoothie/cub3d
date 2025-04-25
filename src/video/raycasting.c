@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:11:27 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 17:19:54 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 12:01:27 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ray_cast(t_context *ctx)
 		dist_size(&rc);
 		if (!out_of_map(&ctx->map, rc.mapx, rc.mapy))
 			render_texture(ctx, rc, x);
-		x++;	
+		x++;
 	}
 }
 
@@ -89,7 +89,8 @@ static void	found_collision(t_map *map, t_raycast *rc)
 			rc->mapy += rc->stepy;
 			rc->side = true;
 		}
-		if (out_of_map(map, rc->mapx, rc->mapy) || map->map[rc->mapx][rc->mapy] == 1)
+		if (out_of_map(map, rc->mapx, rc->mapy)
+			|| map->map[rc->mapx][rc->mapy] == 1)
 			break ;
 	}
 }
@@ -98,7 +99,7 @@ static void	dist_size(t_raycast *rc)
 {
 	if (!rc->side)
 		rc->walldist = (rc->sidedistx - rc->deltadistx);
-	else 
+	else
 		rc->walldist = (rc->sidedisty - rc->deltadisty);
 	rc->lineheight = (int)(WHEIGHT / rc->walldist);
 	rc->sy = -rc->lineheight / 2 + WHEIGHT / 2;

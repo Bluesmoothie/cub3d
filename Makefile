@@ -42,6 +42,7 @@ SRC_FILES		=	main				\
 					video/player		\
 					video/raycasting	\
 					video/render		\
+					video/textures		\
 					video/utils			\
 
 SRC 			= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
@@ -68,6 +69,7 @@ BONUS_SRC_FILES = 	main_bonus			\
 					video/player_bonus	\
 					video/raycasting	\
 					video/render		\
+					video/textures		\
 					video/utils			\
 
 BONUS_SRC 		= 	$(addprefix $(BONUS_SRC_DIR), $(addsuffix .c, $(BONUS_SRC_FILES)))

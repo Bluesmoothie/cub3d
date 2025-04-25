@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:05:04 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 17:17:33 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 12:01:41 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	*get_dir(t_raycast *rc, t_txtdata *txt)
 {
 	int			*result;
 
-	if(!rc->side)
+	if (!rc->side)
 	{
 		if (rc->stepx > 0)
 			return (txt->so);
