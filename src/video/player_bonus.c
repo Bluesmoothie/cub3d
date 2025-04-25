@@ -6,14 +6,14 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:26:12 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 19:28:29 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 11:30:00 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static void	collision_check(t_context *ctx, char op);
-static void	mouse_camera_moves(t_context *ctx);
+static void	apply_rot(t_player *player, double step_size);
 
 void	player_moves(t_context *ctx)
 {
@@ -43,19 +43,29 @@ void	player_moves(t_context *ctx)
 
 void	camera_moves(t_context *ctx)
 {
-	const double	mem = ctx->player.dirx;
+	static int		x = 0;
+	static int		y = 0;
+	double			movx;
 
+	mlx_mouse_get_pos(ctx->mlx.id, ctx->mlx.win, &x, &y);
+	movx = (double)(x - WWIDTH / 2);	
+	if (movx)
+	{
+		mlx_mouse_move(ctx->mlx.id, ctx->mlx.win, WWIDTH / 2, WHEIGHT / 2);
+		apply_rot(&ctx->player, -MCSTEP_SIZE * movx);
+	}
 	if (ctx->kin.viewright)
-	{
-		ctx->player.dirx = ctx->player.dirx * cos(CSTEP_SIZE) - ctx->player.diry * sin (CSTEP_SIZE);
-		ctx->player.diry = mem * sin(CSTEP_SIZE) + ctx->player.diry * cos(CSTEP_SIZE);
-	}
+		apply_rot(&ctx->player, CSTEP_SIZE);
 	if (ctx->kin.viewleft)
-	{
-		ctx->player.dirx = ctx->player.dirx * cos(-CSTEP_SIZE) - ctx->player.diry * sin (-CSTEP_SIZE);
-		ctx->player.diry = mem * sin(-CSTEP_SIZE) + ctx->player.diry * cos(-CSTEP_SIZE);
-	}
-	mouse_camera_moves(ctx);
+		apply_rot(&ctx->player, -CSTEP_SIZE);
+}
+
+static void	apply_rot(t_player *player, double step_size)
+{
+	const double	mem = player->dirx;
+
+	player->dirx = player->dirx * cos(step_size) - player->diry * sin (step_size);
+	player->diry = mem * sin(step_size) + player->diry * cos(step_size);
 }
 
 static void	collision_check(t_context *ctx, char op)
@@ -74,23 +84,5 @@ static void	collision_check(t_context *ctx, char op)
 	{
 		ctx->player.posx = x;
 		ctx->player.posy = y;
-	}
-}
-
-static void	mouse_camera_moves(t_context *ctx)
-{
-	const double	mem = ctx->player.dirx;
-	static int		x = 0;
-	static int		y = 0;
-	double			movx;
-
-	mlx_mouse_get_pos(ctx->mlx.id, ctx->mlx.win, &x, &y);
-	movx = (double)(x - WWIDTH / 2);
-	if (movx)
-		mlx_mouse_move(ctx->mlx.id, ctx->mlx.win, WWIDTH / 2, WHEIGHT / 2);
-	if (movx)
-	{
-		ctx->player.dirx = ctx->player.dirx * cos(-MCSTEP_SIZE * movx) - ctx->player.diry * sin (-MCSTEP_SIZE * movx);
-		ctx->player.diry = mem * sin(-MCSTEP_SIZE * movx) + ctx->player.diry * cos(-MCSTEP_SIZE * movx);
 	}
 }
