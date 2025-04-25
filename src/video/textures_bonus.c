@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 11:57:58 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 14:19:15 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 16:46:52 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	deinit_textures(t_context *ctx)
 		free(ctx->txt_path.no);
 	if (ctx->txt_path.we)
 		free(ctx->txt_path.we);
+	deinit_fire(ctx);
 }
 
 static void	load_xpm(t_context *ctx)

@@ -74,6 +74,7 @@ BONUS_SRC_FILES = 	main_bonus				\
 					video/render_bonus		\
 					video/textures_bonus	\
 					video/textures_bonus2	\
+					video/textures_bonus3	\
 					video/utils				\
 
 BONUS_SRC 		= 	$(addprefix $(BONUS_SRC_DIR), $(addsuffix .c, $(BONUS_SRC_FILES)))

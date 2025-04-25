@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 14:19:50 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 16:47:54 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,8 @@ void	render_fire(t_context *ctx, t_raycast rc, int screenx);
 
 //	video/texture_bonus2.c
 void	init_fire(t_context *ctx);
+
+//	video/texture_bonus3.c
+void	deinit_fire(t_context *ctx);
 
 #endif
