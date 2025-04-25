@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 11:58:48 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 12:21:25 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
+
+# if BONUS_MODE
+#  include "mlx_int.h"
+#  include <X11/extensions/Xfixes.h>
+# endif
 
 # include "mlx.h"
 

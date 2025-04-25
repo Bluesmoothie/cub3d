@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 19:30:51 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 12:15:01 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 int	main(int argc, char **argv)
 {
 	t_context	ctx;
+	t_xvar		*mlx;
+	t_win_list	*win;
 
 	init_ctx(&ctx);
 	parse(argc, argv, &ctx);
 	init_video(&ctx.mlx);
 	init_textures(&ctx);
-	mlx_mouse_hide(ctx.mlx.id, ctx.mlx.win);
+	mlx = (t_xvar *)ctx.mlx.id;
+	win = (t_win_list *)ctx.mlx.win;
+	XFixesHideCursor(mlx->display, win->window);
 	init_hooks_loops(&ctx);
 	exit_call();
 	return (EXIT_SUCCESS);

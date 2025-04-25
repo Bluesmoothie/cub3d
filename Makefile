@@ -1,4 +1,4 @@
-.PHONY			:	all clean fclean re norm FORCE bonus
+.PHONY			:	all clean fclean re norm FORCE bonus bonus_mode
 
 NAME			=	cub3d
 BONUS_NAME		=	cub3d_bonus
@@ -6,7 +6,7 @@ BONUS_NAME		=	cub3d_bonus
 #			GCC
 
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror -MMD -MP $(INCLUDE) -g3
+CFLAGS			=	-Wall -Wextra -Werror -MMD -MP $(INCLUDE) -DBONUS_MODE=$(BONUS_MODE)
 LIBS			=	-L$(LIBFT) -lft_ex -L$(MLX) -lmlx -lm -lXext -lX11
 
 #			COMMON
@@ -51,6 +51,8 @@ DEPS 			= 	$(addprefix $(BUILD_DIR), $(addsuffix .d, $(SRC_FILES)))
 
 #			BONUS
 
+BONUS_MODE = 0
+
 BONUS_SRC_FILES = 	main_bonus			\
 					error				\
 					exit				\
@@ -80,10 +82,13 @@ BONUS_DEPS 		= 	$(addprefix $(BUILD_DIR), $(addsuffix .d, $(BONUS_SRC_FILES)))
 
 all				:	$(NAME)
 
-bonus			:	$(BONUS_NAME)
+bonus			:	bonus_mode $(BONUS_NAME)
+
+bonus_mode		:
+				$(eval BONUS_MODE := 1)
 
 $(BONUS_NAME)	:	$(BUILD_DIR) $(BONUS_OBJ) $(LIBFT_A) $(MLX_A)
-				$(CC) $(CFLAGS) $(BONUS_OBJ) $(LIBS) -o $(BONUS_NAME) 
+				$(CC) $(CFLAGS) $(BONUS_OBJ) $(LIBS) -lXfixes -o $(BONUS_NAME) 
 
 $(NAME)			:	$(BUILD_DIR) $(OBJ) $(LIBFT_A) $(MLX_A)
 				$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME) 
