@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:26:12 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 12:02:26 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 13:34:53 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ static void	collision_check(t_context *ctx, char op)
 		y = ctx->player.posy;
 		return ;
 	}
-	if (out_of_map(&ctx->map, ctx->player.posx, ctx->player.posy)
-		|| ctx->map.map[(int)(ctx->player.posx)][(int)(ctx->player.posy)] != 0)
-	{
+	if (out_of_map(&ctx->map, ctx->player.posx, y)
+		|| ctx->map.map[(int)(ctx->player.posx)][(int)(y)] != 0)
 		ctx->player.posx = x;
+	if (out_of_map(&ctx->map, x, ctx->player.posy)
+		|| ctx->map.map[(int)(x)][(int)(ctx->player.posy)] != 0)
 		ctx->player.posy = y;
-	}
 }
