@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/25 11:43:27 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 11:56:15 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	fill_paths(int fd, t_context *ctx)
 	int		j;
 
 	j = 0;
-	while (1)
+	while (j != 6)
 	{
 		current = get_next_line(fd);
 		if (!current || !current[0])
@@ -77,8 +77,6 @@ static void	fill_paths(int fd, t_context *ctx)
 		else if (j < 7)
 			ceiling_floor(current, i, ctx);
 		free(current);
-		if (j == 6)
-			break ;
 	}
 }
 
