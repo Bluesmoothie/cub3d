@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 15:24:13 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 15:24:26 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	render_texture(t_context *ctx, t_raycast rc, int screenx)
 			render.txty = (double)(ctx->txt_infos.height - 1);
 		render.y++;
 	}
+	if (txt == ctx->txt.ea)
+		render_fire(ctx, rc, screenx);
 }
 
 static void	render_frame(t_context *ctx)

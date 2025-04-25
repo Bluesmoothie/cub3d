@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:02:51 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 18:58:01 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 15:35:18 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_video(t_mlx *mlx)
 	mlx->img = mlx_new_image(mlx->id, WWIDTH, WHEIGHT);
 	if (mlx->img == NULL)
 		error("Mlx new image failed", NULL);
-	mlx->img_data = mlx_get_data_addr(mlx->img, &mlx->screen.bpp,
+	mlx->img_data = (int *)mlx_get_data_addr(mlx->img, &mlx->screen.bpp,
 			&mlx->screen.line_size, &mlx->screen.endian);
 	if (mlx->img_data == NULL)
 		error("Mlx get data addr failed", NULL);

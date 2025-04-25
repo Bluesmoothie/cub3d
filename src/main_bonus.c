@@ -6,11 +6,13 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 12:15:01 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 13:41:27 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "mlx_int.h"
+#include <X11/extensions/Xfixes.h>
 
 int	main(int argc, char **argv)
 {

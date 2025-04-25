@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 12:03:34 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 14:19:50 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,11 @@ void	deinit_textures(t_context *ctx);
 int		calc_txtx(t_raycast *rc, t_txtinfos *txt, t_player *player);
 int		*get_dir(t_raycast *rc, t_txtdata *txt);
 bool	out_of_map(t_map *map, int x, int y);
+
+//	video/animation_bonus.c
+void	render_fire(t_context *ctx, t_raycast rc, int screenx);
+
+//	video/texture_bonus2.c
+void	init_fire(t_context *ctx);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 12:03:21 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 15:34:41 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCT_H
 
 # include <stdbool.h>
+# include <stdlib.h>
 
 typedef struct s_rendering
 {
@@ -82,7 +83,7 @@ typedef struct s_mlx
 	void		*id;
 	void		*win;
 	void		*img;
-	void		*img_data;
+	int			*img_data;
 	t_txtinfos	screen;
 }	t_mlx;
 
@@ -102,6 +103,31 @@ typedef struct s_txtdata
 	int		*ea;
 }	t_txtdata;
 
+typedef struct s_fire
+{
+	void	*f1;
+	void	*f2;
+	void	*f3;
+	void	*f4;
+	void	*f5;
+	void	*f6;
+	void	*f7;
+	void	*f8;	
+	int		*f1_img;
+	int		*f2_img;
+	int		*f3_img;
+	int		*f4_img;
+	int		*f5_img;
+	int		*f6_img;
+	int		*f7_img;
+	int		*f8_img;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_size;
+	int		endian;
+}	t_fire;
+
 typedef struct s_context
 {
 	t_mlx		mlx;
@@ -114,6 +140,8 @@ typedef struct s_context
 	t_kin		kin;
 	t_map		map;
 	t_player	player;
+	t_fire		fire;
+	size_t		frame;
 }	t_context;
 
 #endif

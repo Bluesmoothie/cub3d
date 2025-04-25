@@ -6,24 +6,18 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 12:21:25 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 15:38:32 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <stdlib.h>
 # include <stdio.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
-
-# if BONUS_MODE
-#  include "mlx_int.h"
-#  include <X11/extensions/Xfixes.h>
-# endif
 
 # include "mlx.h"
 
@@ -38,6 +32,8 @@
 # define PSTEP_SIZE		0.0625
 # define CSTEP_SIZE		6.0
 # define MCSTEP_SIZE	0.01
+
+# define NOCOLOR	-16777216
 
 //	main.c
 
