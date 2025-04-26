@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:23:58 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/25 11:43:12 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/26 13:09:27 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static char	**fill_char_tab(int fd)
 {
 	char	*current;
 	char	**charmap;
-	int		i;
 	int		max;
 
 	charmap = malloc(11 * sizeof(char *));
@@ -51,7 +50,6 @@ static char	**fill_char_tab(int fd)
 	current = go_to_first_map_line(fd);
 	if (!current)
 		error("please check map", NULL);
-	i = 0;
 	max = 10;
 	charmap = fill_char_tab_2(charmap, fd, current, max);
 	return (charmap);

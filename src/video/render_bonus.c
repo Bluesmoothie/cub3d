@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 15:24:26 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/25 20:13:25 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	renderer(t_context *ctx)
 		ctx->ceiling[0] = get_bgcolor(ctx->ceiling);
 		ctx->floor[0] = get_bgcolor(ctx->floor);
 	}
-	if (!(timer % 200))
+	if (1)
 	{
 		ctx->frame++;
 		player_moves(ctx);
