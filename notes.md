@@ -8,8 +8,8 @@ Render :
 Collisions : yves
 Minicarte : 
 Portes : 
-Animations :
-Controle pdv a la souris :
+Animations : Yves
+Controle pdv a la souris : Yves
 
 ## ex struct
 
