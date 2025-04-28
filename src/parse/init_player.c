@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:32 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 18:18:27 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:58:04 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	init_player(t_context *ctx)
 		{
 			if (ctx->map.map[i][j] > 1 && ctx->map.map[i][j] < 6)
 			{
-				ctx->player.posx = (double)i;
-				ctx->player.posy = (double)j;
+				ctx->player.posx = (double)i + 0.5;
+				ctx->player.posy = (double)j + 0.5;
 				fill_player_dir(ctx, ctx->map.map[i][j]);
 				ctx->map.map[i][j] = 0;
 				return ;
