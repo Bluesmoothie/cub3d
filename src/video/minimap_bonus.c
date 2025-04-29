@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:51:01 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 14:16:37 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:39:54 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ static void	fill_mmap(t_context *ctx, int x, int y)
 			if (x == (int)ctx->player.posx && y == (int)ctx->player.posy)
 				render_map_pixel(&ctx->map, 0x00FFFFFF, ctx->map.pixelmap * x + i,
 					ctx->map.pixelmap * y + j);
-			else if (ctx->map.map[x][y] < 0 || ctx->map.map[x][y] == 1)
+			else if (ctx->map.map[x][y] == -2 || ctx->map.map[x][y] == 6)
+					render_map_pixel(&ctx->map, 0x00F1C40F, ctx->map.pixelmap * x + i,
+						ctx->map.pixelmap * y + j);
+			else if (ctx->map.map[x][y] == -1 || ctx->map.map[x][y] == 1)
 				render_map_pixel(&ctx->map, 0x00566573, ctx->map.pixelmap * x + i,
 					ctx->map.pixelmap * y + j);
 			else if (ctx->map.map[x][y] == 0 || ctx->map.map[x][y] > 1)
