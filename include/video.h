@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   video.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 12:11:45 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 14:07:16 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VIDEO_H
 # define VIDEO_H
 
-# define WWIDTH		2048
-# define WHEIGHT	1024
-# define PIXELMAP	10
-# define WTITLE		"CUB3D"
+# define WWIDTH 2048
+# define WHEIGHT 1024
+# define PIXELMAP 10
+# define WTITLE "CUB3D"
 
 # include "struct.h"
 
@@ -67,6 +67,6 @@ void	init_mmap(t_context *ctx);
 void	deinit_mmap(t_context *ctx);
 
 //	video/minimap_bonus.c
-void		render_map(t_context *ctx);
+void	render_map(t_context *ctx);
 
 #endif

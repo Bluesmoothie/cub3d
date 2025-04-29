@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:15:10 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 11:15:09 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:06:06 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,13 @@ static void	check_perso(t_map *map)
 		{
 			if (map->map[i][j] > 1 && map->map[i][j] < 6 && !is_already_here)
 				is_already_here = 1;
-			else if (map->map[i][j] > 1 && map->map[i][j] < 6 && is_already_here)
+			else if (map->map[i][j] > 1 && map->map[i][j] < 6
+				&& is_already_here)
 				error("too many characters", NULL);
 			j++;
 		}
 		i++;
 	}
+	if (!is_already_here)
+		error("No character in map", NULL);
 }
