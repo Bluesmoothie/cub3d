@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_bonus3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 16:47:16 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 14:17:05 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:30:12 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	deinit_fire(t_context *ctx)
 
 void	init_mmap(t_context *ctx)
 {
-	ctx->map.mmap = mlx_new_image(ctx->mlx.id, ctx->map.width * ctx->map.pixelmap,
+	ctx->map.mmap = mlx_new_image(ctx->mlx.id,
+			ctx->map.width * ctx->map.pixelmap,
 			ctx->map.height * ctx->map.pixelmap);
 	verif(ctx, ctx->map.mmap, "mmap");
 	ctx->map.mmap_img = (int *)mlx_get_data_addr(ctx->map.mmap, &ctx->map.bpp,
