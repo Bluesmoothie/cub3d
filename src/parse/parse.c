@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/25 11:56:15 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 14:26:03 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	parse(int ac, char **av, t_context *ctx)
 	fill_map(fd, ctx);
 	check_map(&ctx->map);
 	init_player(ctx);
+	ctx->map.pixelmap = 10 * (WHEIGHT / (ctx->map.height * 100) + 1) * (WWIDTH
+			/ (ctx->map.width * 100) + 1);
 	while (get_next_line(fd))
 		;
 }

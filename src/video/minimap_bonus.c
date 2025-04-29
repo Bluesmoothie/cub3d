@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:51:01 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 14:06:49 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:16:37 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,20 @@ static void	fill_mmap(t_context *ctx, int x, int y)
 	int	j;
 
 	i = 0;
-	while (i < PIXELMAP)
+	while (i < ctx->map.pixelmap)
 	{
 		j = 0;
-		while (j < PIXELMAP)
+		while (j < ctx->map.pixelmap)
 		{
 			if (x == (int)ctx->player.posx && y == (int)ctx->player.posy)
-				render_map_pixel(&ctx->map, 0x00FFFFFF, PIXELMAP * x + i,
-					PIXELMAP * y + j);
+				render_map_pixel(&ctx->map, 0x00FFFFFF, ctx->map.pixelmap * x + i,
+					ctx->map.pixelmap * y + j);
 			else if (ctx->map.map[x][y] < 0 || ctx->map.map[x][y] == 1)
-				render_map_pixel(&ctx->map, 0x00566573, PIXELMAP * x + i,
-					PIXELMAP * y + j);
+				render_map_pixel(&ctx->map, 0x00566573, ctx->map.pixelmap * x + i,
+					ctx->map.pixelmap * y + j);
 			else if (ctx->map.map[x][y] == 0 || ctx->map.map[x][y] > 1)
-				render_map_pixel(&ctx->map, 0x009c640c, PIXELMAP * x + i,
-					PIXELMAP * y + j);
+				render_map_pixel(&ctx->map, 0x009c640c, ctx->map.pixelmap * x + i,
+					ctx->map.pixelmap * y + j);
 			j++;
 		}
 		i++;
@@ -61,6 +61,6 @@ static void	fill_mmap(t_context *ctx, int x, int y)
 
 static void	render_map_pixel(t_map *map, int color, int y, int x)
 {
-	if (x <= map->width * PIXELMAP && y <= map->height * PIXELMAP)
-		map->mmap_img[x + y * map->width * PIXELMAP] = color;
+	if (x <= map->width * map->pixelmap && y <= map->height * map->pixelmap)
+		map->mmap_img[x + y * map->width * map->pixelmap] = color;
 }
