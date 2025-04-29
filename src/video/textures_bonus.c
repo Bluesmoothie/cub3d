@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 11:57:58 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 11:30:09 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:06:21 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_textures(t_context *ctx)
 	load_xpm(ctx);
 	get_addr(ctx);
 	init_fire(ctx);
+	init_mmap(ctx);
 }
 
 /*
@@ -51,11 +52,8 @@ void	deinit_textures(t_context *ctx)
 		free(ctx->txt_path.no);
 	if (ctx->txt_path.we)
 		free(ctx->txt_path.we);
-	if (ctx->txt_path.od)
-		free(ctx->txt_path.od);
-	if (ctx->txt_path.cd)
-		free(ctx->txt_path.cd);
 	deinit_fire(ctx);
+	deinit_mmap(ctx);
 }
 
 static void	load_xpm(t_context *ctx)
@@ -72,6 +70,12 @@ static void	load_xpm(t_context *ctx)
 	ctx->txt_id.we = mlx_xpm_file_to_image(ctx->mlx.id, ctx->txt_path.we,
 			&ctx->txt_infos.width, &ctx->txt_infos.height);
 	verif(ctx, ctx->txt_id.we, ctx->txt_path.we);
+	ctx->txt_id.cd = mlx_xpm_file_to_image(ctx->mlx.id, "assets/Door.xpm",
+			&ctx->txt_infos.width, &ctx->txt_infos.height);
+	verif(ctx, ctx->txt_id.cd, "assets/Door.xpm");
+	ctx->txt_id.od = mlx_xpm_file_to_image(ctx->mlx.id, "assets/Door2.xpm",
+			&ctx->txt_infos.width, &ctx->txt_infos.height);
+	verif(ctx, ctx->txt_id.od, "assets/Door2.xpm");
 }
 
 static void	get_addr(t_context *ctx)
@@ -92,6 +96,14 @@ static void	get_addr(t_context *ctx)
 			&ctx->txt_infos.line_size, &ctx->txt_infos.endian);
 	if (!ctx->txt.we)
 		error("Mlx get data addr failed on", "we");
+	ctx->txt.cd = (int *)mlx_get_data_addr(ctx->txt_id.cd, &ctx->txt_infos.bpp,
+			&ctx->txt_infos.line_size, &ctx->txt_infos.endian);
+	if (!ctx->txt.cd)
+		error("Mlx get data addr failed on", "cd");
+	ctx->txt.od = (int *)mlx_get_data_addr(ctx->txt_id.od, &ctx->txt_infos.bpp,
+			&ctx->txt_infos.line_size, &ctx->txt_infos.endian);
+	if (!ctx->txt.od)
+		error("Mlx get data addr failed on", "od");
 }
 
 /*

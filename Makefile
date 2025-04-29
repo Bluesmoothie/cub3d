@@ -68,6 +68,7 @@ BONUS_SRC_FILES = 	main_bonus				\
 					parse/init_player		\
 					video/animations_bonus	\
 					video/color				\
+					video/minimap_bonus		\
 					video/mlx_bonus			\
 					video/player_bonus		\
 					video/raycasting		\

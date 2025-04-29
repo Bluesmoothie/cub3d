@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:51:01 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 11:41:10 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:11:31 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static void	fill_mmap(t_context *ctx, int x_schema, int y_schema);
-void		render_map(t_context *ctx);
 
 void	render_map(t_context *ctx)
 {

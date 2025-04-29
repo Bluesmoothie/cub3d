@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 20:13:25 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 12:12:28 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int	renderer(t_context *ctx)
 		ctx->frame++;
 		player_moves(ctx);
 		camera_moves(ctx);
+		render_map(ctx);
 		render_frame(ctx);
 		mlx_put_image_to_window(ctx->mlx.id, ctx->mlx.win, ctx->mlx.img, 0, 0);
+		mlx_put_image_to_window(ctx->mlx.id, ctx->mlx.win, ctx->map.mmap, 0, 0);
 	}
 	return (timer++);
 }

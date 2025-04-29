@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   video.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 10:05:00 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:11:45 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,10 @@ void	init_fire(t_context *ctx);
 
 //	video/texture_bonus3.c
 void	deinit_fire(t_context *ctx);
+void	init_mmap(t_context *ctx);
+void	deinit_mmap(t_context *ctx);
+
+//	video/minimap_bonus.c
+void		render_map(t_context *ctx);
 
 #endif
