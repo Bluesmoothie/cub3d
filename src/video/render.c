@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 15:24:13 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:56:39 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 static void	render_frame(t_context *ctx);
 static void	render_bg(t_context *ctx);
 
+/*
+**	Treat inputs and calculate the next frame
+*/
 int	renderer(t_context *ctx)
 {
 	static size_t	timer = 0;
@@ -41,6 +44,10 @@ void	render_pixel(int *frame, int color, int x, int y)
 		frame[x + y * WWIDTH] = color;
 }
 
+/*
+**	Print texture using raycasting result to resize and choose the good
+**	texture depending on the orientation
+*/
 void	render_texture(t_context *ctx, t_raycast rc, int screenx)
 {
 	t_rendering	render;

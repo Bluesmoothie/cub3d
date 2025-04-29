@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:26:12 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 15:36:53 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:50:17 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 static void	collision_check(t_context *ctx, char op);
 static void	apply_rot(t_player *p, double step_size);
 
+/*
+**	Compute player moves
+*/
 void	player_moves(t_context *ctx)
 {
 	collision_check(ctx, COL_STORE);

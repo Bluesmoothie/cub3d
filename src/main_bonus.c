@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 13:41:27 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:56:19 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include "mlx_int.h"
 #include <X11/extensions/Xfixes.h>
 
+/*
+**	Using XFixes func instead of mlx_mouse_hide to avoid leaks
+*/
 int	main(int argc, char **argv)
 {
 	t_context	ctx;

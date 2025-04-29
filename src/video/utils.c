@@ -6,12 +6,15 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:05:04 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 12:01:41 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:55:47 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+**	Calculate the correct column of the texture to display
+*/
 int	calc_txtx(t_raycast *rc, t_txtinfos *txt, t_player *player)
 {
 	double	wallx;

@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 12:35:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 15:36:18 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:49:54 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	render_door(t_context *ctx, t_raycast rc, int screenx)
 	}
 }
 
+/*
+**	Verif if player watch a door and open it if he interact with it
+*/
 void	interact_door(t_context *ctx)
 {
 	const char	dir = get_player_dir(&ctx->player);

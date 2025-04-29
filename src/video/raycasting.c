@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:11:27 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 12:33:37 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:52:55 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ static void			get_ray_dir(t_player *player, t_raycast *rc);
 static void			found_collision(t_map *map, t_raycast *rc);
 static void			dist_size(t_raycast *rc);
 
+/*
+**	That's where the magic is
+**	Launch a ray for each column of pixel on the window
+**	Find the nearest collision and calculate the distance
+**	to calculate the size of the resulting texture
+*/
 void	ray_cast(t_context *ctx)
 {
 	t_raycast	rc;
@@ -35,6 +41,9 @@ void	ray_cast(t_context *ctx)
 	}
 }
 
+/*
+**	Initialize values for raycasting compute
+*/
 static t_raycast	update_rc(t_player *player, int x)
 {
 	t_raycast	rc;

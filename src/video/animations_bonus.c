@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:41:45 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 12:40:40 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:48:46 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	render_fire(t_context *ctx, t_raycast rc, int screenx)
 	}
 }
 
+/*
+**	Choose a different texture depending on frame number to play the animation
+*/
 static int	*choose_txt(t_context *ctx)
 {
 	const int	choice = (ctx->frame / 3) % 8;
