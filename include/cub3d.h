@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 12:41:14 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:35:23 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,19 @@
 # define PSTEP_SIZE		0.0625
 # define CSTEP_SIZE		6.0
 # define MCSTEP_SIZE	0.01
+
+enum	e_tiletypes
+{
+	T_OPENDOOR = -2,
+	T_EMPTY = -1,
+	T_HALL = 0,
+	T_WALL = 1,
+	T_PLAYERN = 2,
+	T_PLAYERS = 3,
+	T_PLAYERE = 4,
+	T_PLAYERW = 5,
+	T_CLOSEDOOR = 6
+};
 
 //	main.c
 
