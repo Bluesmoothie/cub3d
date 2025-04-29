@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 12:35:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 14:38:50 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:29:47 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,17 @@ void	interact_door(t_context *ctx)
 	const char	dir = get_player_dir(&ctx->player);
 
 	if (dir == 'n')
-		try_interact(&ctx->map, (int)ctx->player.posx - 1, (int)ctx->player.posy);
+		try_interact(&ctx->map, (int)ctx->player.posx - 1,
+			(int)ctx->player.posy);
 	else if (dir == 's')
-		try_interact(&ctx->map, (int)ctx->player.posx + 1 , (int)ctx->player.posy);
+		try_interact(&ctx->map, (int)ctx->player.posx + 1,
+			(int)ctx->player.posy);
 	else if (dir == 'e')
-		try_interact(&ctx->map, (int)ctx->player.posx , (int)ctx->player.posy + 1);
+		try_interact(&ctx->map, (int)ctx->player.posx,
+			(int)ctx->player.posy + 1);
 	else
-		try_interact(&ctx->map, (int)ctx->player.posx , (int)ctx->player.posy - 1);
+		try_interact(&ctx->map, (int)ctx->player.posx,
+			(int)ctx->player.posy - 1);
 }
 
 static char	get_player_dir(t_player *player)
