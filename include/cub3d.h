@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 15:38:32 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 12:41:14 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 # define PSTEP_SIZE		0.0625
 # define CSTEP_SIZE		6.0
 # define MCSTEP_SIZE	0.01
-
-# define NOCOLOR	-16777216
 
 //	main.c
 

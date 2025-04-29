@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 11:57:58 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 12:06:21 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 14:25:45 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	deinit_textures(t_context *ctx)
 		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.no);
 	if (ctx->txt_id.we)
 		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.we);
-	if (ctx->txt_id.od)
-		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.od);
 	if (ctx->txt_id.cd)
 		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.cd);
 	if (ctx->txt_path.ea)
@@ -73,9 +71,6 @@ static void	load_xpm(t_context *ctx)
 	ctx->txt_id.cd = mlx_xpm_file_to_image(ctx->mlx.id, "assets/Door.xpm",
 			&ctx->txt_infos.width, &ctx->txt_infos.height);
 	verif(ctx, ctx->txt_id.cd, "assets/Door.xpm");
-	ctx->txt_id.od = mlx_xpm_file_to_image(ctx->mlx.id, "assets/Door2.xpm",
-			&ctx->txt_infos.width, &ctx->txt_infos.height);
-	verif(ctx, ctx->txt_id.od, "assets/Door2.xpm");
 }
 
 static void	get_addr(t_context *ctx)
@@ -100,10 +95,6 @@ static void	get_addr(t_context *ctx)
 			&ctx->txt_infos.line_size, &ctx->txt_infos.endian);
 	if (!ctx->txt.cd)
 		error("Mlx get data addr failed on", "cd");
-	ctx->txt.od = (int *)mlx_get_data_addr(ctx->txt_id.od, &ctx->txt_infos.bpp,
-			&ctx->txt_infos.line_size, &ctx->txt_infos.endian);
-	if (!ctx->txt.od)
-		error("Mlx get data addr failed on", "od");
 }
 
 /*

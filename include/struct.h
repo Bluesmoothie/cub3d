@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 14:15:02 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:29:22 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_kin
 	bool	movdown;
 	bool	movright;
 	bool	movleft;
+	bool	door;
 }	t_kin;
 
 typedef struct s_mlx
@@ -100,7 +101,6 @@ typedef struct s_textures
 	void	*we;
 	void	*ea;
 	void	*cd;
-	void	*od;
 }	t_textures;
 
 typedef struct s_txtdata
@@ -110,7 +110,6 @@ typedef struct s_txtdata
 	int		*we;
 	int		*ea;
 	int		*cd;
-	int		*od;
 }	t_txtdata;
 
 typedef struct s_fire
