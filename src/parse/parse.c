@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 14:26:03 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:27:41 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	check_av(char **av);
 static void	fill_paths(int fd, t_context *ctx);
 static void	ceiling_floor(char *current, int pos, t_context *ctx);
+static void	find_ratio(t_map *map);
 
 void	parse(int ac, char **av, t_context *ctx)
 {
@@ -27,8 +28,7 @@ void	parse(int ac, char **av, t_context *ctx)
 	fill_map(fd, ctx);
 	check_map(&ctx->map);
 	init_player(ctx);
-	ctx->map.pixelmap = 10 * (WHEIGHT / (ctx->map.height * 100) + 1) * (WWIDTH
-			/ (ctx->map.width * 100) + 1);
+	find_ratio(&ctx->map);
 	while (get_next_line(fd))
 		;
 }
@@ -90,4 +90,12 @@ static void	ceiling_floor(char *current, int pos, t_context *ctx)
 		ceiling(current, pos, ctx->floor);
 	else
 		error("problem in floor or ceiling color", NULL);
+}
+
+static void	find_ratio(t_map *map)
+{
+	map->pixelmap = 0;
+	while ((map->width * map->pixelmap < WWIDTH / 4) && (map->height
+			* map->pixelmap < WHEIGHT / 3))
+		map->pixelmap++;
 }
