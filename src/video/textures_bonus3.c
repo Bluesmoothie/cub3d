@@ -6,13 +6,11 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 16:47:16 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 15:30:12 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:46:37 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	verif(t_context *ctx, void *loaded, void *path);
 
 void	deinit_fire(t_context *ctx)
 {
@@ -43,30 +41,11 @@ void	init_mmap(t_context *ctx)
 	ctx->map.mmap_img = (int *)mlx_get_data_addr(ctx->map.mmap, &ctx->map.bpp,
 			&ctx->map.line_size, &ctx->map.endian);
 	if (!ctx->map.mmap)
-		error("Mlx get data addr failed on", "mmap");
+		error(EMGETDATA, "mmap");
 }
 
 void	deinit_mmap(t_context *ctx)
 {
 	if (ctx->map.mmap_img)
 		mlx_destroy_image(ctx->mlx.id, ctx->map.mmap);
-}
-
-/*
-**	Verify if a texture loaded successfully
-*/
-static void	verif(t_context *ctx, void *loaded, void *path)
-{
-	static int	width = 0;
-	static int	height = 0;
-
-	if (loaded == NULL)
-		error("Failed to load", path);
-	if (!width)
-	{
-		width = ctx->txt_infos.width;
-		height = ctx->txt_infos.height;
-	}
-	else if (width != ctx->txt_infos.width || height != ctx->txt_infos.height)
-		error("All textures must be the same size", path);
 }
