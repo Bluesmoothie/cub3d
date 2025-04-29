@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:26:12 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 14:39:31 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:36:53 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ static void	collision_check(t_context *ctx, char op)
 		return ;
 	}
 	if (out_of_map(&ctx->map, ctx->player.posx, y)
-		|| (ctx->map.map[(int)(ctx->player.posx)][(int)(y)] != 0
-		&& ctx->map.map[(int)(ctx->player.posx)][(int)(y)] != -2))
+		|| (ctx->map.map[(int)(ctx->player.posx)][(int)(y)] != T_HALL
+		&& ctx->map.map[(int)(ctx->player.posx)][(int)(y)] != T_OPENDOOR))
 		ctx->player.posx = x;
 	if (out_of_map(&ctx->map, x, ctx->player.posy)
-		|| (ctx->map.map[(int)(x)][(int)(ctx->player.posy)] != 0
-		&& ctx->map.map[(int)(x)][(int)(ctx->player.posy)] != -2))
+		|| (ctx->map.map[(int)(x)][(int)(ctx->player.posy)] != T_HALL
+		&& ctx->map.map[(int)(x)][(int)(ctx->player.posy)] != T_OPENDOOR))
 		ctx->player.posy = y;
 }

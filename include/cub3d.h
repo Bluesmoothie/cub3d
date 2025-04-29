@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:38:21 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 15:35:23 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:40:01 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@
 # define CSTEP_SIZE		6.0
 # define MCSTEP_SIZE	0.01
 
+/*
+**	Walkables < 0
+**	Non walkables > 0
+*/
 enum	e_tiletypes
 {
 	T_OPENDOOR = -2,
