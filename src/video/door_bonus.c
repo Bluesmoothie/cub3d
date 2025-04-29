@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 12:35:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 14:25:25 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 14:38:50 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	try_interact(t_map *map, int x, int y)
 	if (y >= map->width || x >= map->height || x < 0 || y < 0)
 		return ;
 	if (map->map[x][y] == 6)
-		map->map[x][y] = -1;
-	else if (map->map[x][y] == -1)
+		map->map[x][y] = -2;
+	else if (map->map[x][y] == -2)
 		map->map[x][y] = 6;
 }
