@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 11:57:58 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 16:46:52 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 11:30:09 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ void	deinit_textures(t_context *ctx)
 		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.no);
 	if (ctx->txt_id.we)
 		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.we);
+	if (ctx->txt_id.od)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.od);
+	if (ctx->txt_id.cd)
+		mlx_destroy_image(ctx->mlx.id, ctx->txt_id.cd);
 	if (ctx->txt_path.ea)
 		free(ctx->txt_path.ea);
 	if (ctx->txt_path.so)
@@ -47,6 +51,10 @@ void	deinit_textures(t_context *ctx)
 		free(ctx->txt_path.no);
 	if (ctx->txt_path.we)
 		free(ctx->txt_path.we);
+	if (ctx->txt_path.od)
+		free(ctx->txt_path.od);
+	if (ctx->txt_path.cd)
+		free(ctx->txt_path.cd);
 	deinit_fire(ctx);
 }
 

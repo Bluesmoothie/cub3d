@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   video.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 16:47:54 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 10:05:00 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WWIDTH		2048
 # define WHEIGHT	1024
+# define PIXELMAP	10
 # define WTITLE		"CUB3D"
 
 # include "struct.h"

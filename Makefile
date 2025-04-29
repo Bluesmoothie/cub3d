@@ -63,8 +63,8 @@ BONUS_SRC_FILES = 	main_bonus				\
 					parse/parse_utils		\
 					parse/parse				\
 					parse/parse_map			\
-					parse/parse_map_2		\
-					parse/check_map			\
+					parse/parse_map_2_bonus	\
+					parse/check_map_bonus	\
 					parse/init_player		\
 					video/animations_bonus	\
 					video/color				\
