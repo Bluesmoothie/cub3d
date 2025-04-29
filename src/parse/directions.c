@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 09:40:26 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 14:57:51 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:19:03 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	fill_path(char *current, int pos, t_textures *txt, int direction)
 	i = pos;
 	while (current[i] && current[i] != '\n')
 		i++;
-	path = ft_substr(current, pos, i - pos);
+	path = ft_strtrim(ft_substr(current, pos, i - pos), " \t\n\f\v\r");
 	if (!path)
 		error("malloc_error", NULL);
 	if (direction == 1)
