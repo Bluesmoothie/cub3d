@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:32 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/28 11:58:04 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:49:20 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_player(t_context *ctx)
 		j = 1;
 		while (j < ctx->map.width - 1)
 		{
-			if (ctx->map.map[i][j] > 1 && ctx->map.map[i][j] < 6)
+			if (ctx->map.map[i][j] > T_WALL && ctx->map.map[i][j] < 6)
 			{
 				ctx->player.posx = (double)i + 0.5;
 				ctx->player.posy = (double)j + 0.5;
@@ -41,22 +41,22 @@ void	init_player(t_context *ctx)
 
 void	fill_player_dir(t_context *ctx, int pos)
 {
-	if (pos == 2)
+	if (pos == T_PLAYERN)
 	{
 		ctx->player.dirx = -1.0;
 		ctx->player.diry = 0.0;
 	}
-	else if (pos == 3)
+	else if (pos == T_PLAYERS)
 	{
 		ctx->player.dirx = 1.0;
 		ctx->player.diry = 0.0;
 	}
-	else if (pos == 4)
+	else if (pos == T_PLAYERE)
 	{
 		ctx->player.dirx = 0.0;
 		ctx->player.diry = 1.0;
 	}
-	else if (pos == 5)
+	else if (pos == T_PLAYERW)
 	{
 		ctx->player.dirx = 0.0;
 		ctx->player.diry = -1.0;
