@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:41:45 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/25 15:49:12 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 12:40:40 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	*choose_txt(t_context *ctx);
 static int	calc_ftxtx(t_raycast *rc, t_fire *txt, t_player *player);
-static int	trans_pixel(int orig, int txt);
 
 void	render_fire(t_context *ctx, t_raycast rc, int screenx)
 {
@@ -73,11 +72,4 @@ static int	calc_ftxtx(t_raycast *rc, t_fire *txt, t_player *player)
 	if ((!rc->side && rc->raydirx > 0) || (rc->side && rc->raydiry < 0))
 		txtx = txt->width - txtx - 1;
 	return (txtx);
-}
-
-static int	trans_pixel(int orig, int txt)
-{
-	if (txt == NOCOLOR)
-		return (orig);
-	return (txt);
 }

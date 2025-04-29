@@ -57,7 +57,7 @@ BONUS_SRC_FILES = 	main_bonus				\
 					error					\
 					exit					\
 					init					\
-					inputs/keyboard			\
+					inputs/keyboard_bonus	\
 					parse/ceiling_floor		\
 					parse/directions 		\
 					parse/parse_utils		\
@@ -68,6 +68,7 @@ BONUS_SRC_FILES = 	main_bonus				\
 					parse/init_player		\
 					video/animations_bonus	\
 					video/color				\
+					video/door_bonus		\
 					video/minimap_bonus		\
 					video/mlx_bonus			\
 					video/player_bonus		\

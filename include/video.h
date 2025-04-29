@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 12:11:45 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 12:45:22 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define WHEIGHT	1024
 # define PIXELMAP	10
 # define WTITLE		"CUB3D"
+
+# define NOCOLOR	-16777216
 
 # include "struct.h"
 
@@ -29,6 +31,7 @@ enum	e_col_codes
 //	video/color.c
 int		get_bgcolor(int color[3]);
 int		get_color(int t, int r, int g, int b);
+int		trans_pixel(int orig, int txt);
 
 //	video/player.c
 void	player_moves(t_context *ctx);
@@ -68,5 +71,9 @@ void	deinit_mmap(t_context *ctx);
 
 //	video/minimap_bonus.c
 void		render_map(t_context *ctx);
+
+//	video/door_bonus.c
+void	render_door(t_context *ctx, t_raycast rc, int screenx);
+void	interact_door(t_context *ctx);
 
 #endif

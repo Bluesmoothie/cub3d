@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 12:12:28 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 14:25:07 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int	renderer(t_context *ctx)
 		ctx->frame++;
 		player_moves(ctx);
 		camera_moves(ctx);
+		if (ctx->kin.door)
+			interact_door(ctx);
+		ctx->kin.door = false;
 		render_map(ctx);
 		render_frame(ctx);
 		mlx_put_image_to_window(ctx->mlx.id, ctx->mlx.win, ctx->mlx.img, 0, 0);
@@ -48,6 +51,8 @@ void	render_texture(t_context *ctx, t_raycast rc, int screenx)
 	t_rendering	render;
 	int			*txt;
 
+	if (ctx->map.map[rc.mapx][rc.mapy] == 6)
+		return (render_door(ctx, rc, screenx));
 	render.txtstep = 1.0 * ctx->txt_infos.height / rc.lineheight;
 	render.txty = (rc.sy - WHEIGHT / 2 + rc.lineheight / 2) * render.txtstep;
 	render.y = rc.sy;
