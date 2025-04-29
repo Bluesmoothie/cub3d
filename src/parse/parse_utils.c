@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:27:17 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/25 12:02:43 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:52:17 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void	check_first_and_last_line(t_map *map)
 	i = -1;
 	while (++i < map->width)
 	{
-		if (map->map[0][i] > -1 && map->map[0][i] != 1)
+		if (map->map[0][i] > T_EMPTY && map->map[0][i] != T_WALL)
 			error("wrong map", NULL);
 	}
 	i = -1;
 	while (++i < map->width)
 	{
-		if (map->map[map->height - 1][i] > -1 && map->map[map->height
-			- 1][i] != 1)
+		if (map->map[map->height - 1][i] > T_EMPTY && map->map[map->height
+			- 1][i] != T_WALL)
 			error("wrong map", NULL);
 	}
 }

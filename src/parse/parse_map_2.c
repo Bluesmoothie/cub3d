@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:24:46 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 15:30:19 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:51:28 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	fill_int_tab(t_context *ctx, char **charmap)
 		}
 		while (j < ctx->map.width)
 		{
-			ctx->map.map[i][j] = -1;
+			ctx->map.map[i][j] = T_EMPTY;
 			j++;
 		}
 		i++;
@@ -41,21 +41,21 @@ void	fill_int_tab(t_context *ctx, char **charmap)
 static int	fill_box(char **charmap, int i, int j)
 {
 	if (charmap[i][j] == ' ')
-		return (-1);
+		return (T_EMPTY);
 	else if (charmap[i][j] == '1')
-		return (1);
+		return (T_WALL);
 	else if (charmap[i][j] == '0')
-		return (0);
+		return (T_HALL);
 	else if (charmap[i][j] == 'N')
-		return (2);
+		return (T_PLAYERN);
 	else if (charmap[i][j] == 'S')
-		return (3);
+		return (T_PLAYERS);
 	else if (charmap[i][j] == 'E')
-		return (4);
+		return (T_PLAYERE);
 	else if (charmap[i][j] == 'W')
-		return (5);
+		return (T_PLAYERW);
 	else if (charmap[i][j] == '\n')
-		return (-1);
+		return (T_EMPTY);
 	else
 	{
 		free_chartab(charmap);
