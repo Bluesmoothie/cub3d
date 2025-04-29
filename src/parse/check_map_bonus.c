@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:15:10 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 15:47:42 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:50:12 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ static void	check_perso(t_map *map)
 		j = 1;
 		while (j < map->width - 1)
 		{
-			if (map->map[i][j] > T_WALL && map->map[i][j] < T_CLOSEDOOR && !is_already_here)
+			if (map->map[i][j] > T_WALL && map->map[i][j] < T_CLOSEDOOR
+				&& !is_already_here)
 				is_already_here = 1;
 			else if (map->map[i][j] > T_WALL && map->map[i][j] < T_CLOSEDOOR
 				&& is_already_here)
