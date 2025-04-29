@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_2_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:24:46 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 15:50:45 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:41:05 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	fill_box(char **charmap, int i, int j)
 	else if (charmap[i][j] == '0')
 		return (T_HALL);
 	else if (charmap[i][j] == '6')
-		return (T_OPENDOOR);
+		return (T_CLOSEDOOR);
 	else if (charmap[i][j] == 'N')
 		return (T_PLAYERN);
 	else if (charmap[i][j] == 'S')
