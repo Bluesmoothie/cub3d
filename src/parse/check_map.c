@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:15:10 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/24 18:07:08 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:06:16 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,6 @@ static void	check_perso(t_map *map)
 		}
 		i++;
 	}
+	if (!is_already_here)
+		error("No character in map", NULL);
 }

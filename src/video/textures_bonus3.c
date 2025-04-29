@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_bonus3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 16:47:16 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 12:12:42 by ygille           ###   ########.fr       */
+/*   Updated: 2025/04/29 14:06:58 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ void	deinit_fire(t_context *ctx)
 
 void	init_mmap(t_context *ctx)
 {
-	ctx->map.mmap = mlx_new_image(ctx->mlx.id, ctx->map.width * PIXELMAP, ctx->map.height * PIXELMAP);
+	ctx->map.mmap = mlx_new_image(ctx->mlx.id, ctx->map.width * PIXELMAP,
+			ctx->map.height * PIXELMAP);
 	verif(ctx, ctx->map.mmap, "mmap");
-	ctx->map.mmap_img = (int *)mlx_get_data_addr(ctx->map.mmap, &ctx->map.bpp, &ctx->map.line_size,&ctx->map.endian);
+	ctx->map.mmap_img = (int *)mlx_get_data_addr(ctx->map.mmap, &ctx->map.bpp,
+			&ctx->map.line_size, &ctx->map.endian);
 	if (!ctx->map.mmap)
 		error("Mlx get data addr failed on", "mmap");
 }
