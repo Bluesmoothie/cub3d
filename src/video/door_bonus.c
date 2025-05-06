@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 12:35:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 14:43:44 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:39:06 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@ void	render_door(t_context *ctx, t_raycast rc, int screenx)
 
 	render.txtstep = 1.0 * ctx->txt_infos.height / rc.lineheight;
 	render.txty = (rc.sy - WHEIGHT / 2 + rc.lineheight / 2) * render.txtstep;
-	render.y = rc.sy;
 	render.txtx = calc_txtx(&rc, &ctx->txt_infos, &ctx->player);
-	while (render.y <= rc.ey)
+	while (rc.sy <= rc.ey)
 	{
 		render_pixel(ctx->mlx.img_data,
-			trans_pixel(ctx->mlx.img_data[screenx + render.y * WWIDTH],
+			trans_pixel(ctx->mlx.img_data[screenx + rc.sy * WWIDTH],
 				txt[render.txtx + (int)render.txty * ctx->txt_infos.width]),
-			screenx, render.y);
+			screenx, rc.sy);
 		render.txty += render.txtstep;
 		if ((int)render.txty >= ctx->txt_infos.height)
 			render.txty = (double)(ctx->txt_infos.height - 1);
-		render.y++;
+		rc.sy++;
 	}
 }
 

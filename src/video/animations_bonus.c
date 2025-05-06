@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:41:45 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 15:12:29 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:38:31 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,17 @@ void	render_fire(t_context *ctx, t_raycast rc, int screenx)
 
 	render.txtstep = 1.0 * ctx->fire.txtinfos.height / rc.lineheight;
 	render.txty = (rc.sy - WHEIGHT / 2 + rc.lineheight / 2) * render.txtstep;
-	render.y = rc.sy;
 	render.txtx = calc_txtx(&rc, &ctx->fire.txtinfos, &ctx->player);
-	while (render.y <= rc.ey)
+	while (rc.sy <= rc.ey)
 	{
 		render_pixel(ctx->mlx.img_data,
-			trans_pixel(ctx->mlx.img_data[screenx + render.y * WWIDTH],
+			trans_pixel(ctx->mlx.img_data[screenx + rc.sy * WWIDTH],
 				txt[render.txtx + (int)render.txty * ctx->fire.txtinfos.width]),
-			screenx, render.y);
+			screenx, rc.sy);
 		render.txty += render.txtstep;
 		if ((int)render.txty >= ctx->fire.txtinfos.height)
 			render.txty = (double)(ctx->fire.txtinfos.height - 1);
-		render.y++;
+		rc.sy++;
 	}
 }
 
