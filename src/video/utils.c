@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:05:04 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 15:54:49 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 16:53:04 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	calc_txtx(t_raycast *rc, t_txtinfos *txt, t_player *player)
 		wallx = player->posy + rc->walldist * rc->rayy;
 	else
 		wallx = player->posx + rc->walldist * rc->rayx;
-	wallx -= floor(wallx);
-	txtx = (int)(wallx * (double)txt->width);
-	if ((!rc->side && rc->rayx > 0) || (rc->side && rc->rayy < 0))
+	txtx = (wallx - floor(wallx)) * (double)txt->width;
+	if ((rc->side == SIDE_NS && rc->rayx > 0)
+		|| (rc->side == SIDE_EW && rc->rayy < 0))
 		txtx = txt->width - txtx - 1;
 	return (txtx);
 }
@@ -57,7 +57,8 @@ bool	out_of_map(t_map *map, int x, int y)
 	return (x >= map->height || y >= map->width || x < 0 || y < 0);
 }
 
-t_rendering	calc_render_params(t_txtinfos *infos, t_player *player, t_raycast *rc)
+t_rendering	calc_render_params(t_txtinfos *infos, t_player *player,
+	t_raycast *rc)
 {
 	t_rendering	render;
 

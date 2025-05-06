@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:18:36 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 15:11:08 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 16:54:19 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,24 @@ static void	load_xpm(t_context *ctx)
 
 static void	get_addr(t_context *ctx)
 {
-	ctx->fire.f1_img = (int *)mlx_get_data_addr(ctx->fire.f1, &ctx->fire.txtinfos.bpp,
-			&ctx->fire.txtinfos.line_size, &ctx->fire.txtinfos.endian);
+	ctx->fire.f1_img = (int *)mlx_get_data_addr(ctx->fire.f1,
+			&ctx->fire.txtinfos.bpp, &ctx->fire.txtinfos.line_size,
+			&ctx->fire.txtinfos.endian);
 	if (!ctx->fire.f1_img)
 		error(EMGETDATA, "f1_bonus");
-	ctx->fire.f2_img = (int *)mlx_get_data_addr(ctx->fire.f2, &ctx->fire.txtinfos.bpp,
-			&ctx->fire.txtinfos.line_size, &ctx->fire.txtinfos.endian);
+	ctx->fire.f2_img = (int *)mlx_get_data_addr(ctx->fire.f2,
+			&ctx->fire.txtinfos.bpp, &ctx->fire.txtinfos.line_size,
+			&ctx->fire.txtinfos.endian);
 	if (!ctx->fire.f2_img)
 		error(EMGETDATA, "f2_bonus");
-	ctx->fire.f3_img = (int *)mlx_get_data_addr(ctx->fire.f3, &ctx->fire.txtinfos.bpp,
-			&ctx->fire.txtinfos.line_size, &ctx->fire.txtinfos.endian);
+	ctx->fire.f3_img = (int *)mlx_get_data_addr(ctx->fire.f3,
+			&ctx->fire.txtinfos.bpp, &ctx->fire.txtinfos.line_size,
+			&ctx->fire.txtinfos.endian);
 	if (!ctx->fire.f3_img)
 		error(EMGETDATA, "f3_bonus");
-	ctx->fire.f4_img = (int *)mlx_get_data_addr(ctx->fire.f4, &ctx->fire.txtinfos.bpp,
-			&ctx->fire.txtinfos.line_size, &ctx->fire.txtinfos.endian);
+	ctx->fire.f4_img = (int *)mlx_get_data_addr(ctx->fire.f4,
+			&ctx->fire.txtinfos.bpp, &ctx->fire.txtinfos.line_size,
+			&ctx->fire.txtinfos.endian);
 	if (!ctx->fire.f4_img)
 		error(EMGETDATA, "f4_bonus");
 	get_addr2(ctx);
@@ -73,20 +77,24 @@ static void	get_addr(t_context *ctx)
 
 static void	get_addr2(t_context *ctx)
 {
-	ctx->fire.f5_img = (int *)mlx_get_data_addr(ctx->fire.f5, &ctx->fire.txtinfos.bpp,
-			&ctx->fire.txtinfos.line_size, &ctx->fire.txtinfos.endian);
+	ctx->fire.f5_img = (int *)mlx_get_data_addr(ctx->fire.f5,
+			&ctx->fire.txtinfos.bpp, &ctx->fire.txtinfos.line_size,
+			&ctx->fire.txtinfos.endian);
 	if (!ctx->fire.f5_img)
 		error(EMGETDATA, "f5_bonus");
-	ctx->fire.f6_img = (int *)mlx_get_data_addr(ctx->fire.f6, &ctx->fire.txtinfos.bpp,
-			&ctx->fire.txtinfos.line_size, &ctx->fire.txtinfos.endian);
+	ctx->fire.f6_img = (int *)mlx_get_data_addr(ctx->fire.f6,
+			&ctx->fire.txtinfos.bpp, &ctx->fire.txtinfos.line_size,
+			&ctx->fire.txtinfos.endian);
 	if (!ctx->fire.f6_img)
 		error(EMGETDATA, "f6_bonus");
-	ctx->fire.f7_img = (int *)mlx_get_data_addr(ctx->fire.f7, &ctx->fire.txtinfos.bpp,
-			&ctx->fire.txtinfos.line_size, &ctx->fire.txtinfos.endian);
+	ctx->fire.f7_img = (int *)mlx_get_data_addr(ctx->fire.f7,
+			&ctx->fire.txtinfos.bpp, &ctx->fire.txtinfos.line_size,
+			&ctx->fire.txtinfos.endian);
 	if (!ctx->fire.f7_img)
 		error(EMGETDATA, "f7_bonus");
-	ctx->fire.f8_img = (int *)mlx_get_data_addr(ctx->fire.f8, &ctx->fire.txtinfos.bpp,
-			&ctx->fire.txtinfos.line_size, &ctx->fire.txtinfos.endian);
+	ctx->fire.f8_img = (int *)mlx_get_data_addr(ctx->fire.f8,
+			&ctx->fire.txtinfos.bpp, &ctx->fire.txtinfos.line_size,
+			&ctx->fire.txtinfos.endian);
 	if (!ctx->fire.f8_img)
 		error(EMGETDATA, "f8_bonus");
 }

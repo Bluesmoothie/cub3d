@@ -6,15 +6,15 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:11:27 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 15:19:44 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 16:54:34 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static t_raycast	update_rc(t_player *player, int x);
+static t_raycast	init_rc(t_player *player, int x);
 static void			get_ray_dir(t_player *player, t_raycast *rc);
-static void			found_collision(t_map *map, t_raycast *rc);
+static void			ray_step(t_raycast *rc);
 static void			dist_size(t_raycast *rc);
 
 /*
@@ -31,9 +31,11 @@ void	ray_cast(t_context *ctx)
 	x = 0;
 	while (x < WWIDTH)
 	{
-		rc = update_rc(&ctx->player, x);
+		rc = init_rc(&ctx->player, x);
 		get_ray_dir(&ctx->player, &rc);
-		found_collision(&ctx->map, &rc);
+		while (!(out_of_map(&ctx->map, rc.mapx, rc.mapy)
+				|| ctx->map.map[rc.mapx][rc.mapy] > 0))
+			ray_step(&rc);
 		if (!out_of_map(&ctx->map, rc.mapx, rc.mapy))
 		{
 			dist_size(&rc);
@@ -46,7 +48,7 @@ void	ray_cast(t_context *ctx)
 /*
 **	Initialize values for raycasting compute
 */
-static t_raycast	update_rc(t_player *player, int x)
+static t_raycast	init_rc(t_player *player, int x)
 {
 	t_raycast	rc;
 
@@ -55,8 +57,8 @@ static t_raycast	update_rc(t_player *player, int x)
 	rc.rayy = player->viewy - player->viewx * rc.cam_angle;
 	rc.raystepx = fabs(1 / rc.rayx);
 	rc.raystepy = fabs(1 / rc.rayy);
-	rc.mapx = (int)player->posx;
-	rc.mapy = (int)player->posy;
+	rc.mapx = player->posx;
+	rc.mapy = player->posy;
 	return (rc);
 }
 
@@ -84,25 +86,19 @@ static void	get_ray_dir(t_player *player, t_raycast *rc)
 	}
 }
 
-static void	found_collision(t_map *map, t_raycast *rc)
+static void	ray_step(t_raycast *rc)
 {
-	while (1)
+	if (rc->nextsidex < rc->nextsidey)
 	{
-		if (rc->nextsidex < rc->nextsidey)
-		{
-			rc->nextsidex += rc->raystepx;
-			rc->mapx += rc->stepx;
-			rc->side = SIDE_NS;
-		}
-		else
-		{
-			rc->nextsidey += rc->raystepy;
-			rc->mapy += rc->stepy;
-			rc->side = SIDE_EW;
-		}
-		if (out_of_map(map, rc->mapx, rc->mapy)
-			|| map->map[rc->mapx][rc->mapy] > 0)
-			break ;
+		rc->nextsidex += rc->raystepx;
+		rc->mapx += rc->stepx;
+		rc->side = SIDE_NS;
+	}
+	else
+	{
+		rc->nextsidey += rc->raystepy;
+		rc->mapy += rc->stepy;
+		rc->side = SIDE_EW;
 	}
 }
 

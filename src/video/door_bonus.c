@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 12:35:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 15:55:37 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 16:54:39 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static char	get_player_dir(t_player *player);
 static void	try_interact(t_map *map, int x, int y);
 
-void	render_door(t_context *ctx, t_raycast rc, int screenx, t_rendering render)
+void	render_door(t_context *ctx, t_raycast rc, int screenx,
+	t_rendering render)
 {
 	const int	*txt = ctx->txt.cd;
 
