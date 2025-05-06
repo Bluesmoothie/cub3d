@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:23:58 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 17:50:15 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 18:07:15 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char	*go_to_first_map_line(int fd);
 static char	**fill_char_tab(int fd);
 static char	**fill_char_tab_2(char **charmap, int fd, char *current, int max);
-static void	check_if_end(int fd);
+static void	check_if_end(int fd, char **charmap, char *current);
 
 void	fill_map(int fd, t_context *ctx)
 {
@@ -71,7 +71,7 @@ static char	**fill_char_tab_2(char **charmap, int fd, char *current, int max)
 			i++;
 			if (!current || (current[0] == '\n'))
 			{
-				check_if_end(fd);
+				check_if_end(fd, charmap, current);
 				if (current)
 					free(current);
 				charmap[i] = NULL;
@@ -108,7 +108,7 @@ static char	*go_to_first_map_line(int fd)
 	}
 }
 
-static void	check_if_end(int fd)
+static void	check_if_end(int fd, char **charmap, char *current)
 {
 	char	*test;
 
@@ -118,9 +118,21 @@ static void	check_if_end(int fd)
 		if (test && ft_strlen(test) > 1 && test[0] != '\n')
 		{
 			free(test);
+			free_chartab(charmap);
+			if (current)
+			free(current);
+			while (1)
+			{
+				test = get_next_line(fd);
+				if (test)
+					free(test);
+				else
+					break ;
+			}
 			error("map error", NULL);
 		}
 		if (!test)
 			return ;
+		free(test);
 	}
 }
