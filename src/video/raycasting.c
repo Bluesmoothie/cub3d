@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:11:27 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 15:02:51 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:19:44 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ void	ray_cast(t_context *ctx)
 		rc = update_rc(&ctx->player, x);
 		get_ray_dir(&ctx->player, &rc);
 		found_collision(&ctx->map, &rc);
-		dist_size(&rc);
 		if (!out_of_map(&ctx->map, rc.mapx, rc.mapy))
+		{
+			dist_size(&rc);
 			render_texture(ctx, rc, x);
+		}
 		x++;
 	}
 }
