@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 15:48:16 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:56:44 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,9 @@ void	render_texture(t_context *ctx, t_raycast rc, int screenx)
 	const int	ymem = rc.sy;
 	int			*txt;
 
+	render = calc_render_params(&ctx->txt_infos, &ctx->player, &rc);
 	if (ctx->map.map[rc.mapx][rc.mapy] == T_CLOSEDOOR)
-		return (render_door(ctx, rc, screenx));
-	render.txtstep = 1.0 * ctx->txt_infos.height / rc.lineheight;
-	render.txty = (rc.sy - WHEIGHT / 2 + rc.lineheight / 2) * render.txtstep;
-	render.txtx = calc_txtx(&rc, &ctx->txt_infos, &ctx->player);
+		return (render_door(ctx, rc, screenx, render));
 	txt = get_dir(&rc, &ctx->txt);
 	while (rc.sy <= rc.ey)
 	{
@@ -75,9 +73,11 @@ void	render_texture(t_context *ctx, t_raycast rc, int screenx)
 			render.txty = (double)(ctx->txt_infos.height - 1);
 		rc.sy++;
 	}
-	rc.sy = ymem;
 	if (txt == ctx->txt.ea)
+	{
+		rc.sy = ymem;
 		render_fire(ctx, rc, screenx);
+	}
 }
 
 static void	render_frame(t_context *ctx)

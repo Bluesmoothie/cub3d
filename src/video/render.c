@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 15:37:54 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:54:34 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ void	render_texture(t_context *ctx, t_raycast rc, int screenx)
 	t_rendering	render;
 	int			*txt;
 
-	render.txtstep = 1.0 * ctx->txt_infos.height / rc.lineheight;
-	render.txty = (rc.sy - WHEIGHT / 2 + rc.lineheight / 2) * render.txtstep;
-	render.txtx = calc_txtx(&rc, &ctx->txt_infos, &ctx->player);
+	render = calc_render_params(&ctx->txt_infos, &ctx->player, &rc);
 	txt = get_dir(&rc, &ctx->txt);
 	while (rc.sy <= rc.ey)
 	{

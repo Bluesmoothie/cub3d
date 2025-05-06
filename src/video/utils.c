@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:05:04 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 14:53:52 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:54:49 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,14 @@ int	*get_dir(t_raycast *rc, t_txtdata *txt)
 bool	out_of_map(t_map *map, int x, int y)
 {
 	return (x >= map->height || y >= map->width || x < 0 || y < 0);
+}
+
+t_rendering	calc_render_params(t_txtinfos *infos, t_player *player, t_raycast *rc)
+{
+	t_rendering	render;
+
+	render.txtstep = 1.0 * infos->height / rc->lineheight;
+	render.txty = (rc->sy - WHEIGHT / 2 + rc->lineheight / 2) * render.txtstep;
+	render.txtx = calc_txtx(rc, infos, player);
+	return (render);
 }
