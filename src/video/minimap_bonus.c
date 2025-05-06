@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:51:01 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/06 16:07:45 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:23:14 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	render_map(t_context *ctx)
 	int	y_schema;
 
 	x_schema = 0;
-	while (x_schema < ctx->map.height * ctx->map.x_r)
+	while (x_schema < ctx->map.height)
 	{
 		y_schema = 0;
-		while (y_schema < ctx->map.width * ctx->map.y_r)
+		while (y_schema < ctx->map.width)
 		{
 			fill_mmap(ctx, x_schema, y_schema);
 			y_schema += ctx->map.y_r;

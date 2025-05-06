@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/06 16:07:35 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:22:21 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,16 @@ static void	find_ratio(t_map *map)
 		map->px++;
 	map->x_r = 1;
 	map->y_r = 1;
+	map->mmap_height = map->height;
+	map->mmap_width = map->width;
 	if (map->height > WHEIGHT >> 2)
 	{
 		map->x_r = 1 + map->height / (WHEIGHT >> 2);
-		map->height /= map->x_r;
+		map->mmap_height = map->height / map->x_r;
 	}
 	if (map->width > WWIDTH >> 2)
 	{
 		map->y_r = 1 + map->width / (WWIDTH >> 2);
-		map->width /= map->y_r;
+		map->mmap_width = map->width / map->y_r;
 	}
 }

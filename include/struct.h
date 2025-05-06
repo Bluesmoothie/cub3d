@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 17:35:21 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 18:20:53 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ typedef struct s_map
 	void	*mmap;
 	int		x_r;
 	int		y_r;
+	int		mmap_width;
+	int		mmap_height;
 	int		*mmap_img;
 	int		bpp;
 	int		line_size;
