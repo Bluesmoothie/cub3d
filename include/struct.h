@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 14:29:22 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:07:32 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,13 @@ typedef struct s_map
 	int		width;
 	int		height;
 	void	*mmap;
+	int		x_r;
+	int		y_r;
 	int		*mmap_img;
 	int		bpp;
 	int		line_size;
 	int		endian;
-	int		pixelmap;
+	int		px;
 }	t_map;
 
 typedef struct s_txtinfos

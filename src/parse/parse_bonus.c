@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/06 15:38:13 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:07:35 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	check_av(char **av);
 static void	fill_paths(int fd, t_context *ctx);
 static void	ceiling_floor(char *current, int pos, t_context *ctx);
+static void	find_ratio(t_map *map);
 
 void	parse(int ac, char **av, t_context *ctx)
 {
@@ -27,6 +28,7 @@ void	parse(int ac, char **av, t_context *ctx)
 	fill_map(fd, ctx);
 	check_map(&ctx->map);
 	init_player(ctx);
+	find_ratio(&ctx->map);
 	while (get_next_line(fd))
 		;
 }
@@ -88,4 +90,24 @@ static void	ceiling_floor(char *current, int pos, t_context *ctx)
 		ceiling(current, pos, ctx->floor);
 	else
 		error("problem in floor or ceiling color", NULL);
+}
+
+static void	find_ratio(t_map *map)
+{
+	map->px = 0;
+	while ((map->width * map->px < WWIDTH / 4) && (map->height
+			* map->px < WHEIGHT / 3))
+		map->px++;
+	map->x_r = 1;
+	map->y_r = 1;
+	if (map->height > WHEIGHT >> 2)
+	{
+		map->x_r = 1 + map->height / (WHEIGHT >> 2);
+		map->height /= map->x_r;
+	}
+	if (map->width > WWIDTH >> 2)
+	{
+		map->y_r = 1 + map->width / (WWIDTH >> 2);
+		map->width /= map->y_r;
+	}
 }
