@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 16:07:32 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:11:19 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,18 @@ typedef struct s_rendering
 {
 	double	txtstep;
 	double	txty;
-	int		y;
 	int		txtx;
 }	t_rendering;
 
 typedef struct s_raycast
 {
-	double	camerax;
-	double	raydirx;
-	double	raydiry;
-	double	sidedistx;
-	double	sidedisty;
-	double	deltadistx;
-	double	deltadisty;
+	double	cam_angle;
+	double	rayx;
+	double	rayy;
+	double	nextsidex;
+	double	nextsidey;
+	double	raystepx;
+	double	raystepy;
 	double	walldist;
 	int		lineheight;
 	int		sy;
@@ -48,8 +47,8 @@ typedef struct s_player
 {
 	double	posx;
 	double	posy;
-	double	dirx;
-	double	diry;
+	double	viewx;
+	double	viewy;
 }	t_player;
 
 typedef struct s_map
@@ -116,27 +115,23 @@ typedef struct s_txtdata
 
 typedef struct s_fire
 {
-	void	*f1;
-	void	*f2;
-	void	*f3;
-	void	*f4;
-	void	*f5;
-	void	*f6;
-	void	*f7;
-	void	*f8;	
-	int		*f1_img;
-	int		*f2_img;
-	int		*f3_img;
-	int		*f4_img;
-	int		*f5_img;
-	int		*f6_img;
-	int		*f7_img;
-	int		*f8_img;
-	int		width;
-	int		height;
-	int		bpp;
-	int		line_size;
-	int		endian;
+	void		*f1;
+	void		*f2;
+	void		*f3;
+	void		*f4;
+	void		*f5;
+	void		*f6;
+	void		*f7;
+	void		*f8;	
+	int			*f1_img;
+	int			*f2_img;
+	int			*f3_img;
+	int			*f4_img;
+	int			*f5_img;
+	int			*f6_img;
+	int			*f7_img;
+	int			*f8_img;
+	t_txtinfos	txtinfos;
 }	t_fire;
 
 typedef struct s_context

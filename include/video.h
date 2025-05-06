@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 15:46:14 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:55:53 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # define NOCOLOR	-16777216
 
 # include "struct.h"
+
+# define SIDE_NS	false
+# define SIDE_EW	true
 
 enum	e_col_codes
 {
@@ -54,9 +57,10 @@ void	deinit_textures(t_context *ctx);
 void	verif(t_context *ctx, void *loaded, void *path);
 
 //	video/utils.c
-int		calc_txtx(t_raycast *rc, t_txtinfos *txt, t_player *player);
-int		*get_dir(t_raycast *rc, t_txtdata *txt);
-bool	out_of_map(t_map *map, int x, int y);
+int			calc_txtx(t_raycast *rc, t_txtinfos *txt, t_player *player);
+int			*get_dir(t_raycast *rc, t_txtdata *txt);
+bool		out_of_map(t_map *map, int x, int y);
+t_rendering	calc_render_params(t_txtinfos *infos, t_player *player, t_raycast *rc);
 
 //	video/animation_bonus.c
 void	render_fire(t_context *ctx, t_raycast rc, int screenx);
@@ -73,7 +77,7 @@ void	deinit_mmap(t_context *ctx);
 void	render_map(t_context *ctx);
 
 //	video/door_bonus.c
-void	render_door(t_context *ctx, t_raycast rc, int screenx);
+void	render_door(t_context *ctx, t_raycast rc, int screenx, t_rendering render);
 void	interact_door(t_context *ctx);
 
 #endif

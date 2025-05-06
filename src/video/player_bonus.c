@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:26:12 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 15:50:17 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:06:16 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,23 @@ void	player_moves(t_context *ctx)
 	collision_check(ctx, COL_STORE);
 	if (ctx->kin.movdown)
 	{
-		ctx->player.posx -= ctx->player.dirx * PSTEP_SIZE;
-		ctx->player.posy -= ctx->player.diry * PSTEP_SIZE;
+		ctx->player.posx -= ctx->player.viewx * PSTEP_SIZE;
+		ctx->player.posy -= ctx->player.viewy * PSTEP_SIZE;
 	}
 	if (ctx->kin.movup)
 	{
-		ctx->player.posx += ctx->player.dirx * PSTEP_SIZE;
-		ctx->player.posy += ctx->player.diry * PSTEP_SIZE;
+		ctx->player.posx += ctx->player.viewx * PSTEP_SIZE;
+		ctx->player.posy += ctx->player.viewy * PSTEP_SIZE;
 	}
 	if (ctx->kin.movleft)
 	{
-		ctx->player.posx -= ctx->player.diry * PSTEP_SIZE;
-		ctx->player.posy += ctx->player.dirx * PSTEP_SIZE;
+		ctx->player.posx -= ctx->player.viewy * PSTEP_SIZE;
+		ctx->player.posy += ctx->player.viewx * PSTEP_SIZE;
 	}
 	if (ctx->kin.movright)
 	{
-		ctx->player.posx += ctx->player.diry * PSTEP_SIZE;
-		ctx->player.posy -= ctx->player.dirx * PSTEP_SIZE;
+		ctx->player.posx += ctx->player.viewy * PSTEP_SIZE;
+		ctx->player.posy -= ctx->player.viewx * PSTEP_SIZE;
 	}
 	collision_check(ctx, COL_CHECK);
 }
@@ -65,10 +65,12 @@ void	camera_moves(t_context *ctx)
 
 static void	apply_rot(t_player *p, double step_size)
 {
-	const double	mem = p->dirx;
+	const double	mem = p->viewx;
+	const double	cosval = cos(step_size);
+	const double	sinval = sin(step_size);
 
-	p->dirx = p->dirx * cos(step_size) - p->diry * sin (step_size);
-	p->diry = mem * sin(step_size) + p->diry * cos(step_size);
+	p->viewx = p->viewx * cosval - p->viewy * sinval;
+	p->viewy = mem * sinval + p->viewy * cosval;
 }
 
 static void	collision_check(t_context *ctx, char op)
