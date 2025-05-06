@@ -6,7 +6,7 @@ BONUS_NAME		=	cub3d_bonus
 #			GCC
 
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror -MMD -MP $(INCLUDE)
+CFLAGS			=	-Wall -Wextra -Werror -MMD -MP $(INCLUDE) -g3
 LIBS			=	-L$(LIBFT) -lft_ex -L$(MLX) -lmlx -lm -lXext -lX11
 
 #			COMMON

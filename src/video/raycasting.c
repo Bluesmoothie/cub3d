@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:11:27 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 17:40:03 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 17:52:30 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static t_raycast	init_rc(t_player *player, int x)
 	rc.rayy = player->viewy - player->viewx * rc.cam_angle;
 	rc.raystepx = fabs(1 / rc.rayx);
 	rc.raystepy = fabs(1 / rc.rayy);
+	rc.side = SIDE_NS;
 	return (rc);
 }
 
