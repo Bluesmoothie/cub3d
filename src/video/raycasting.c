@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:11:27 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 16:54:34 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 17:33:12 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ static t_raycast	init_rc(t_player *player, int x)
 {
 	t_raycast	rc;
 
+	rc.mapx = player->posx;
+	rc.mapy = player->posy;
 	rc.cam_angle = 2 * x / (double)WWIDTH - 1;
 	rc.rayx = player->viewx + player->viewy * rc.cam_angle;
 	rc.rayy = player->viewy - player->viewx * rc.cam_angle;
 	rc.raystepx = fabs(1 / rc.rayx);
 	rc.raystepy = fabs(1 / rc.rayy);
-	rc.mapx = player->posx;
-	rc.mapy = player->posy;
 	return (rc);
 }
 
@@ -67,37 +67,39 @@ static void	get_ray_dir(t_player *player, t_raycast *rc)
 	if (rc->rayx < 0)
 	{
 		rc->stepx = -1;
-		rc->nextsidex = (player->posx - rc->mapx) * rc->raystepx;
+		rc->nextsidex = -(int)player->posx + player->posx ;
 	}
 	else
 	{
 		rc->stepx = 1;
-		rc->nextsidex = (rc->mapx + 1.0 - player->posx) * rc->raystepx;
+		rc->nextsidex = (int)player->posx - player->posx + 1;
 	}
 	if (rc->rayy < 0)
 	{
 		rc->stepy = -1;
-		rc->nextsidey = (player->posy - rc->mapy) * rc->raystepy;
+		rc->nextsidey = -(int)player->posy + player->posy ;
 	}
 	else
 	{
 		rc->stepy = 1;
-		rc->nextsidey = (rc->mapy + 1.0 - player->posy) * rc->raystepy;
+		rc->nextsidey = (int)player->posy - player->posy + 1;
 	}
+	rc->nextsidex *= rc->raystepx;
+	rc->nextsidey *= rc->raystepy;
 }
 
 static void	ray_step(t_raycast *rc)
 {
 	if (rc->nextsidex < rc->nextsidey)
 	{
-		rc->nextsidex += rc->raystepx;
 		rc->mapx += rc->stepx;
+		rc->nextsidex += rc->raystepx;
 		rc->side = SIDE_NS;
 	}
 	else
 	{
-		rc->nextsidey += rc->raystepy;
 		rc->mapy += rc->stepy;
+		rc->nextsidey += rc->raystepy;
 		rc->side = SIDE_EW;
 	}
 }
@@ -108,11 +110,11 @@ static void	dist_size(t_raycast *rc)
 		rc->walldist = (rc->nextsidex - rc->raystepx);
 	else
 		rc->walldist = (rc->nextsidey - rc->raystepy);
-	rc->lineheight = WHEIGHT / rc->walldist;
-	rc->sy = -rc->lineheight / 2 + WHEIGHT / 2;
+	rc->halfheight = WHEIGHT / rc->walldist / 2;
+	rc->sy = HWHEIGHT - rc->halfheight;
+	rc->ey = HWHEIGHT + rc->halfheight;
 	if (rc->sy < 0)
 		rc->sy = 0;
-	rc->ey = rc->lineheight / 2 + WHEIGHT / 2;
 	if (rc->ey >= WHEIGHT)
 		rc->ey = WHEIGHT - 1;
 }

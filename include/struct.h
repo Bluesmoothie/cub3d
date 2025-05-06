@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 16:11:19 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:35:21 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stdbool.h>
 # include <stdlib.h>
 
+/*
+**	This variables permit texture size adjustement
+**	depending on the distance between the player and the texture
+*/
 typedef struct s_rendering
 {
 	double	txtstep;
@@ -23,6 +27,9 @@ typedef struct s_rendering
 	int		txtx;
 }	t_rendering;
 
+/*
+**	All variables needed for computing rays
+*/
 typedef struct s_raycast
 {
 	double	cam_angle;
@@ -33,7 +40,7 @@ typedef struct s_raycast
 	double	raystepx;
 	double	raystepy;
 	double	walldist;
-	int		lineheight;
+	int		halfheight;
 	int		sy;
 	int		ey;
 	int		mapx;

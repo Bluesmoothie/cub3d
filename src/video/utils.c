@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:05:04 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 16:53:04 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 17:25:46 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ t_rendering	calc_render_params(t_txtinfos *infos, t_player *player,
 {
 	t_rendering	render;
 
-	render.txtstep = 1.0 * infos->height / rc->lineheight;
-	render.txty = (rc->sy - WHEIGHT / 2 + rc->lineheight / 2) * render.txtstep;
+	render.txtstep = 1.0 * infos->height / (rc->halfheight * 2);
+	render.txty = (rc->sy - WHEIGHT / 2 + rc->halfheight) * render.txtstep;
 	render.txtx = calc_txtx(rc, infos, player);
 	return (render);
 }
