@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 12:35:48 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 15:49:54 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 14:43:44 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ void	interact_door(t_context *ctx)
 
 static char	get_player_dir(t_player *player)
 {
-	if (fabs(player->dirx) >= 0.5)
+	if (fabs(player->viewx) >= 0.5)
 	{
-		if (player->dirx < 0)
+		if (player->viewx < 0)
 			return ('n');
 		else
 			return ('s');
 	}
 	else
 	{
-		if (player->diry < 0)
+		if (player->viewy < 0)
 			return ('w');
 		else
 			return ('e');

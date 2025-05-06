@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:05:04 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 14:19:49 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 14:53:52 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	calc_txtx(t_raycast *rc, t_txtinfos *txt, t_player *player)
 	double	wallx;
 	int		txtx;
 
-	if (!rc->side)
-		wallx = player->posy + rc->walldist * rc->raydiry;
+	if (rc->side == SIDE_NS)
+		wallx = player->posy + rc->walldist * rc->rayy;
 	else
-		wallx = player->posx + rc->walldist * rc->raydirx;
+		wallx = player->posx + rc->walldist * rc->rayx;
 	wallx -= floor(wallx);
 	txtx = (int)(wallx * (double)txt->width);
-	if ((!rc->side && rc->raydirx > 0) || (rc->side && rc->raydiry < 0))
+	if ((!rc->side && rc->rayx > 0) || (rc->side && rc->rayy < 0))
 		txtx = txt->width - txtx - 1;
 	return (txtx);
 }
@@ -35,7 +35,7 @@ int	*get_dir(t_raycast *rc, t_txtdata *txt)
 {
 	int			*result;
 
-	if (!rc->side)
+	if (rc->side == SIDE_NS)
 	{
 		if (rc->stepx > 0)
 			return (txt->no);

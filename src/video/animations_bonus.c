@@ -6,33 +6,32 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:41:45 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/29 15:48:46 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:12:29 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static int	*choose_txt(t_context *ctx);
-static int	calc_ftxtx(t_raycast *rc, t_fire *txt, t_player *player);
 
 void	render_fire(t_context *ctx, t_raycast rc, int screenx)
 {
 	const int	*txt = choose_txt(ctx);
 	t_rendering	render;
 
-	render.txtstep = 1.0 * ctx->fire.height / rc.lineheight;
+	render.txtstep = 1.0 * ctx->fire.txtinfos.height / rc.lineheight;
 	render.txty = (rc.sy - WHEIGHT / 2 + rc.lineheight / 2) * render.txtstep;
 	render.y = rc.sy;
-	render.txtx = calc_ftxtx(&rc, &ctx->fire, &ctx->player);
+	render.txtx = calc_txtx(&rc, &ctx->fire.txtinfos, &ctx->player);
 	while (render.y <= rc.ey)
 	{
 		render_pixel(ctx->mlx.img_data,
 			trans_pixel(ctx->mlx.img_data[screenx + render.y * WWIDTH],
-				txt[render.txtx + (int)render.txty * ctx->fire.width]),
+				txt[render.txtx + (int)render.txty * ctx->fire.txtinfos.width]),
 			screenx, render.y);
 		render.txty += render.txtstep;
-		if ((int)render.txty >= ctx->fire.height)
-			render.txty = (double)(ctx->fire.height - 1);
+		if ((int)render.txty >= ctx->fire.txtinfos.height)
+			render.txty = (double)(ctx->fire.txtinfos.height - 1);
 		render.y++;
 	}
 }
@@ -59,20 +58,4 @@ static int	*choose_txt(t_context *ctx)
 	if (choice == 6)
 		return (ctx->fire.f7_img);
 	return (ctx->fire.f8_img);
-}
-
-static int	calc_ftxtx(t_raycast *rc, t_fire *txt, t_player *player)
-{
-	double	wallx;
-	int		txtx;
-
-	if (!rc->side)
-		wallx = player->posy + rc->walldist * rc->raydiry;
-	else
-		wallx = player->posx + rc->walldist * rc->raydirx;
-	wallx -= floor(wallx);
-	txtx = (int)(wallx * (double)txt->width);
-	if ((!rc->side && rc->raydirx > 0) || (rc->side && rc->raydiry < 0))
-		txtx = txt->width - txtx - 1;
-	return (txtx);
 }
