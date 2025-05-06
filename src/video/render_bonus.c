@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:39:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 15:38:07 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:48:16 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	render_pixel(int *frame, int color, int x, int y)
 void	render_texture(t_context *ctx, t_raycast rc, int screenx)
 {
 	t_rendering	render;
+	const int	ymem = rc.sy;
 	int			*txt;
 
 	if (ctx->map.map[rc.mapx][rc.mapy] == T_CLOSEDOOR)
@@ -74,6 +75,7 @@ void	render_texture(t_context *ctx, t_raycast rc, int screenx)
 			render.txty = (double)(ctx->txt_infos.height - 1);
 		rc.sy++;
 	}
+	rc.sy = ymem;
 	if (txt == ctx->txt.ea)
 		render_fire(ctx, rc, screenx);
 }
