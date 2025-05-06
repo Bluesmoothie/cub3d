@@ -61,7 +61,7 @@ BONUS_SRC_FILES = 	main_bonus				\
 					parse/ceiling_floor		\
 					parse/directions 		\
 					parse/parse_utils		\
-					parse/parse				\
+					parse/parse_bonus		\
 					parse/parse_map			\
 					parse/parse_map_2_bonus	\
 					parse/check_map_bonus	\
