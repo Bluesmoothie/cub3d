@@ -6,7 +6,7 @@
 /*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:03:24 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 17:28:55 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/07 12:50:01 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WWIDTH 	2048
 # define WHEIGHT 	1024
-# define HWHEIGHT 	(WHEIGHT / 2)
+# define HWHEIGHT 	512
 # define WTITLE 	"CUB3D"
 
 # define NOCOLOR	-16777216
