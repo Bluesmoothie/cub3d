@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:23:58 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/06 18:07:15 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:48:00 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ static void	check_if_end(int fd, char **charmap, char *current)
 			free(test);
 			free_chartab(charmap);
 			if (current)
-			free(current);
+				free(current);
 			while (1)
 			{
 				test = get_next_line(fd);
