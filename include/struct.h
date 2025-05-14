@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:35 by ygille            #+#    #+#             */
-/*   Updated: 2025/05/06 18:20:53 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 10:09:40 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ typedef struct s_context
 	t_player	player;
 	t_fire		fire;
 	size_t		frame;
+	int			fd;
 }	t_context;
 
 #endif

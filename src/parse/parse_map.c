@@ -6,57 +6,60 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:23:58 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/07 12:48:00 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:09:31 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-static char	*go_to_first_map_line(int fd);
-static char	**fill_char_tab(int fd);
-static char	**fill_char_tab_2(char **charmap, int fd, char *current, int max);
-static void	check_if_end(int fd, char **charmap, char *current);
+static char	*go_to_first_map_line(t_context *ctx, char **charmap);
+static char	**fill_char_tab(t_context *ctx);
+static char	**fill_char_tab_2(char **charmap, t_context *ctx, char *current, int max);
+static void	check_if_end(t_context *ctx, char **charmap, char *current);
 
-void	fill_map(int fd, t_context *ctx)
+void	fill_map(t_context *ctx)
 {
 	char	**charmap;
 	int		i;
 
-	charmap = fill_char_tab(fd);
+	charmap = fill_char_tab(ctx);
 	ctx->map.height = max_height(charmap);
 	ctx->map.width = max_width(charmap);
 	ctx->map.map = ft_calloc(ctx->map.height, sizeof(int *));
 	if (!ctx->map.map)
-		error("malloc error", NULL);
+		error_map(ctx, charmap);
 	i = 0;
 	while (i < ctx->map.height)
 	{
 		ctx->map.map[i] = ft_calloc(ctx->map.width, sizeof(int));
 		if (!ctx->map.map[i])
+		{
+			free_chartab(charmap);
 			error("malloc error", NULL);
+		}
 		i++;
 	}
 	fill_int_tab(ctx, charmap);
 }
 
-static char	**fill_char_tab(int fd)
+static char	**fill_char_tab(t_context *ctx)
 {
 	char	*current;
 	char	**charmap;
 	int		max;
 
-	charmap = malloc(11 * sizeof(char *));
+	charmap = calloc(11, sizeof(char *));
 	if (!charmap)
-		error("malloc error", NULL);
-	current = go_to_first_map_line(fd);
+		error_empty_buff(ctx, "malloc error");
+	current = go_to_first_map_line(ctx, charmap);
 	if (!current)
-		error("please check map", NULL);
+		error_empty_buff(ctx, "please check map");
 	max = 10;
-	charmap = fill_char_tab_2(charmap, fd, current, max);
+	charmap = fill_char_tab_2(charmap, ctx, current, max);
 	return (charmap);
 }
 
-static char	**fill_char_tab_2(char **charmap, int fd, char *current, int max)
+static char	**fill_char_tab_2(char **charmap, t_context *ctx, char *current, int max)
 {
 	int	i;
 
@@ -67,11 +70,11 @@ static char	**fill_char_tab_2(char **charmap, int fd, char *current, int max)
 		{
 			charmap[i] = ft_strdup(current);
 			free(current);
-			current = get_next_line(fd);
+			current = get_next_line(ctx->fd);
 			i++;
 			if (!current || (current[0] == '\n'))
 			{
-				check_if_end(fd, charmap, current);
+				check_if_end(ctx, charmap, current);
 				if (current)
 					free(current);
 				charmap[i] = NULL;
@@ -84,7 +87,7 @@ static char	**fill_char_tab_2(char **charmap, int fd, char *current, int max)
 	return (charmap);
 }
 
-static char	*go_to_first_map_line(int fd)
+static char	*go_to_first_map_line(t_context *ctx, char **charmap)
 {
 	char	*current;
 	int		i;
@@ -92,9 +95,9 @@ static char	*go_to_first_map_line(int fd)
 	current = NULL;
 	while (1)
 	{
-		current = get_next_line(fd);
+		current = get_next_line(ctx->fd);
 		if (!current || !current[0])
-			error("please check input file", NULL);
+			error_empty_buff_3(ctx, "please check input file", current, charmap);
 		i = 0;
 		while (current[i] == ' ')
 			i++;
@@ -108,31 +111,21 @@ static char	*go_to_first_map_line(int fd)
 	}
 }
 
-static void	check_if_end(int fd, char **charmap, char *current)
+static void	check_if_end(t_context *ctx, char **charmap, char *current)
 {
-	char	*test;
-
+	int i;
+	
 	while (1)
 	{
-		test = get_next_line(fd);
-		if (test && ft_strlen(test) > 1 && test[0] != '\n')
+		if (current && ft_strlen(current) > 1 && current[0] != '\n')
 		{
-			free(test);
+			i = 0;
 			free_chartab(charmap);
-			if (current)
-				free(current);
-			while (1)
-			{
-				test = get_next_line(fd);
-				if (test)
-					free(test);
-				else
-					break ;
-			}
-			error("map error", NULL);
+			error_empty_buff_2(ctx, "map error", current);
 		}
-		if (!test)
+		if (!current)
 			return ;
-		free(test);
+		free(current);
+		current = get_next_line(ctx->fd);
 	}
 }

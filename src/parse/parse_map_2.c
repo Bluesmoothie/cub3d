@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:24:46 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 15:51:28 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:49:19 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	fill_box(char **charmap, int i, int j)
 	else
 	{
 		free_chartab(charmap);
-		error("Wrong tab", NULL);
+		error("Map error", NULL);
 	}
 	return (0);
 }

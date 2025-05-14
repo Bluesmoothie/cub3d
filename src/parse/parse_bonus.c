@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/06 18:22:21 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:16:06 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	parse(int ac, char **av, t_context *ctx)
 		error("wrong number of arguments", NULL);
 	fd = check_av(av);
 	fill_paths(fd, ctx);
-	fill_map(fd, ctx);
+	fill_map(ctx);
 	check_map(&ctx->map);
 	init_player(ctx);
 	find_ratio(&ctx->map);

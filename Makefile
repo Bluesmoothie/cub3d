@@ -1,7 +1,7 @@
 .PHONY			:	all clean fclean re norm FORCE bonus
 
-NAME			=	cub3d
-BONUS_NAME		=	cub3d_bonus
+NAME			=	cub3D
+BONUS_NAME		=	cub3D_bonus
 
 #			GCC
 
@@ -37,6 +37,7 @@ SRC_FILES		=	main				\
 					parse/parse_map_2	\
 					parse/check_map		\
 					parse/init_player	\
+					parse/parse_utils_2	\
 					video/color			\
 					video/mlx			\
 					video/player		\

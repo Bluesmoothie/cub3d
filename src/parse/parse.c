@@ -6,29 +6,26 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/06 15:38:13 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 12:59:39 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
 static int	check_av(char **av);
-static void	fill_paths(int fd, t_context *ctx);
+static void	fill_paths(t_context *ctx);
 static void	ceiling_floor(char *current, int pos, t_context *ctx);
 
 void	parse(int ac, char **av, t_context *ctx)
 {
-	int	fd;
-
 	if (ac != 2)
 		error("wrong number of arguments", NULL);
-	fd = check_av(av);
-	fill_paths(fd, ctx);
-	fill_map(fd, ctx);
+	ctx->fd = check_av(av);
+	fill_paths(ctx);
+	fill_map(ctx);
 	check_map(&ctx->map);
 	init_player(ctx);
-	while (get_next_line(fd))
-		;
+	empty_gnl_buff(ctx->fd);
 }
 
 static int	check_av(char **av)
@@ -52,7 +49,7 @@ static int	check_av(char **av)
 	return (fd);
 }
 
-static void	fill_paths(int fd, t_context *ctx)
+static void	fill_paths(t_context *ctx)
 {
 	char	*current;
 	int		i;
@@ -61,9 +58,9 @@ static void	fill_paths(int fd, t_context *ctx)
 	j = 0;
 	while (j != 6)
 	{
-		current = get_next_line(fd);
+		current = get_next_line(ctx->fd);
 		if (!current || !current[0])
-			error("please check input file", NULL);
+			error_empty_buff_2(ctx, "please check input file", current);
 		i = 0;
 		while (current[i] == ' ')
 			i++;
@@ -73,7 +70,7 @@ static void	fill_paths(int fd, t_context *ctx)
 			continue ;
 		}
 		if (j++ < 4)
-			directions(current, i, &ctx->txt_path);
+			directions(current, i, ctx);
 		else if (j < 7)
 			ceiling_floor(current, i, ctx);
 		free(current);
@@ -83,9 +80,11 @@ static void	fill_paths(int fd, t_context *ctx)
 static void	ceiling_floor(char *current, int pos, t_context *ctx)
 {
 	if (current[pos] == 'C')
-		ceiling(current, pos, ctx->ceiling);
+		ceiling(ctx, current, pos, ctx->ceiling);
 	else if (current[pos] == 'F')
-		ceiling(current, pos, ctx->floor);
+		ceiling(ctx, current, pos, ctx->floor);
 	else
-		error("problem in floor or ceiling color", NULL);
+	{
+		error_empty_buff_2(ctx, "problem in floor or ceiling color", current);
+	}
 }

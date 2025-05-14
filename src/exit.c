@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:23:06 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/24 17:35:03 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/14 13:43:02 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	free_exit(t_context *ctx)
 	deinit_textures(ctx);
 	deinit_video(ctx->mlx);
 	free_map(&ctx->map);
+	close(ctx->fd);
 	exit(0);
 }
 
