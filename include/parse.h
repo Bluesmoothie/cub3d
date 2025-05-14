@@ -6,18 +6,18 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:29:39 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/14 13:33:44 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:17:53 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "get_next_line.h"
 #include "cub3d.h"
+#include "get_next_line.h"
+#include "libft.h"
 
 //	parse.c
 void	parse(int ac, char **av, t_context *ctx);
 
-// directions.c 
+// directions.c
 void	directions(char *current, int i, t_context *cxt);
 
 //	parse_utils.c
@@ -31,7 +31,8 @@ void	free_chartab(char **chartab);
 void	empty_gnl_buff(int fd);
 void	error_empty_buff(t_context *ctx, char *message);
 void	error_empty_buff_2(t_context *ctx, char *message, char *tofree);
-void	error_empty_buff_3(t_context *ctx, char *message, char *tofree, void *tofree2);
+void	error_empty_buff_3(t_context *ctx, char *message, char *tofree,
+			void *tofree2);
 void	error_map(t_context *ctx, char **charmap);
 
 //	ceiling_floor.c

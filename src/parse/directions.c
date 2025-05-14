@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 09:40:26 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/14 12:59:21 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:19:07 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,30 +59,30 @@ static void	fill_path(char *current, int pos, t_context *ctx, int direction)
 	fill_path_2(direction, ctx, path, current);
 }
 
-static void	fill_path_2(int dir, t_context *ctx, char *path, char *current)
+static void	fill_path_2(int dir, t_context *ctx, char *path, char *ct)
 {
 	if (dir == 1)
 	{
 		if (ctx->txt_path.no)
-			error_empty_buff_3(ctx, "duplicate directions", path, (void *)current);
+			error_empty_buff_3(ctx, "duplicate directions", path, (void *)ct);
 		ctx->txt_path.no = path;
 	}
 	if (dir == 2)
 	{
 		if (ctx->txt_path.so)
-			error_empty_buff_3(ctx, "duplicate directions", path, (void *)current);
+			error_empty_buff_3(ctx, "duplicate directions", path, (void *)ct);
 		ctx->txt_path.so = path;
 	}
 	if (dir == 3)
 	{
 		if (ctx->txt_path.we)
-			error_empty_buff_3(ctx, "duplicate directions", path, (void *)current);
+			error_empty_buff_3(ctx, "duplicate directions", path, (void *)ct);
 		ctx->txt_path.we = path;
 	}
 	if (dir == 4)
 	{
 		if (ctx->txt_path.ea)
-			error_empty_buff_3(ctx, "duplicate directions", path, (void *)current);
+			error_empty_buff_3(ctx, "duplicate directions", path, (void *)ct);
 		ctx->txt_path.ea = path;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:23:58 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/14 14:09:31 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:17:16 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static char	*go_to_first_map_line(t_context *ctx, char **charmap);
 static char	**fill_char_tab(t_context *ctx);
-static char	**fill_char_tab_2(char **charmap, t_context *ctx, char *current, int max);
+static char	**fill_char_tab_2(char **charmap, t_context *ctx, char *current,
+				int max);
 static void	check_if_end(t_context *ctx, char **charmap, char *current);
 
 void	fill_map(t_context *ctx)
@@ -59,7 +60,8 @@ static char	**fill_char_tab(t_context *ctx)
 	return (charmap);
 }
 
-static char	**fill_char_tab_2(char **charmap, t_context *ctx, char *current, int max)
+static char	**fill_char_tab_2(char **charmap, t_context *ctx, char *current,
+		int max)
 {
 	int	i;
 
@@ -97,7 +99,8 @@ static char	*go_to_first_map_line(t_context *ctx, char **charmap)
 	{
 		current = get_next_line(ctx->fd);
 		if (!current || !current[0])
-			error_empty_buff_3(ctx, "please check input file", current, charmap);
+			error_empty_buff_3(ctx, "please check input file", current,
+				charmap);
 		i = 0;
 		while (current[i] == ' ')
 			i++;
@@ -113,8 +116,8 @@ static char	*go_to_first_map_line(t_context *ctx, char **charmap)
 
 static void	check_if_end(t_context *ctx, char **charmap, char *current)
 {
-	int i;
-	
+	int	i;
+
 	while (1)
 	{
 		if (current && ft_strlen(current) > 1 && current[0] != '\n')
