@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:15:10 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 17:50:12 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/14 14:43:19 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ static void	check_zeros_and_perso(t_map *map)
 		j = 1;
 		while (j < map->width - 1)
 		{
-			if (map->map[i][j] == T_HALL || map->map[i][j] > T_PLAYERW)
-			{
+			if (map->map[i][j] == T_HALL || (map->map[i][j] > T_WALL
+					&& map->map[i][j] < T_CLOSEDOOR))
 				look_for_hole(map, i, j);
-			}
 			j++;
 		}
 		i++;

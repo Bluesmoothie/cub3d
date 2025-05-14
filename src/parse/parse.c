@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:11:14 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/14 12:59:39 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:26:32 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,5 @@ static void	ceiling_floor(char *current, int pos, t_context *ctx)
 	else if (current[pos] == 'F')
 		ceiling(ctx, current, pos, ctx->floor);
 	else
-	{
 		error_empty_buff_2(ctx, "problem in floor or ceiling color", current);
-	}
 }

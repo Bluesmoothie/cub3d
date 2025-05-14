@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:15:10 by sithomas          #+#    #+#             */
-/*   Updated: 2025/04/29 15:45:24 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:43:14 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ static void	check_zeros_and_perso(t_map *map)
 		j = 1;
 		while (j < map->width - 1)
 		{
-			if (map->map[i][j] == T_HALL)
-			{
+			if (map->map[i][j] == T_HALL || (map->map[i][j] > T_WALL
+					&& map->map[i][j] < T_CLOSEDOOR))
 				look_for_hole(map, i, j);
-			}
 			j++;
 		}
 		i++;
@@ -100,9 +99,11 @@ static void	check_perso(t_map *map)
 		j = 1;
 		while (j < map->width - 1)
 		{
-			if (map->map[i][j] > T_WALL && !is_already_here)
+			if (map->map[i][j] > T_WALL && map->map[i][j] < T_CLOSEDOOR
+				&& !is_already_here)
 				is_already_here = 1;
-			else if (map->map[i][j] > T_WALL && is_already_here)
+			else if (map->map[i][j] > T_WALL && map->map[i][j] < T_CLOSEDOOR
+				&& is_already_here)
 				error("too many characters", NULL);
 			j++;
 		}
