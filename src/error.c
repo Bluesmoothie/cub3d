@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:17:32 by ygille            #+#    #+#             */
-/*   Updated: 2025/04/23 14:59:02 by ygille           ###   ########.fr       */
+/*   Updated: 2025/05/14 15:48:06 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	error(char *error, char *arg)
 */
 void	display_error(char *error, char *arg)
 {
-	printf("Error\n %s", error);
+	printf("Error\n%s", error);
 	if (arg)
 		printf(" : %s\n", arg);
 }
