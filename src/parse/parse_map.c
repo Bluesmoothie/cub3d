@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:23:58 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/14 14:17:16 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:48:28 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ static char	**fill_char_tab_2(char **charmap, t_context *ctx, char *current,
 			if (!current || (current[0] == '\n'))
 			{
 				check_if_end(ctx, charmap, current);
-				if (current)
-					free(current);
 				charmap[i] = NULL;
 				return (charmap);
 			}
@@ -116,13 +114,10 @@ static char	*go_to_first_map_line(t_context *ctx, char **charmap)
 
 static void	check_if_end(t_context *ctx, char **charmap, char *current)
 {
-	int	i;
-
 	while (1)
 	{
-		if (current && ft_strlen(current) > 1 && current[0] != '\n')
+		if (current && current[0] != '\n')
 		{
-			i = 0;
 			free_chartab(charmap);
 			error_empty_buff_2(ctx, "map error", current);
 		}
