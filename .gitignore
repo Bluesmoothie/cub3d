@@ -2,7 +2,7 @@
 *.d
 *.a
 *.o
-cub3d
+cub3D
 .vscode/
-cub3d_bonus
+cub3D_bonus
 valgrind_breaker
