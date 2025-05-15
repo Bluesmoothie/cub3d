@@ -124,7 +124,7 @@ clean			:
 
 fclean			:	clean
 				$(MAKE) fclean -s -C $(LIBFT)
-				rm -f $(NAME)
+				rm -f $(NAME) $(BONUS_NAME)
 
 re				:	fclean all
 
