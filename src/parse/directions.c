@@ -6,7 +6,7 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 09:40:26 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/14 14:19:07 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/16 15:58:42 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,13 @@ void	directions(char *current, int i, t_context *ctx)
 {
 	if (!current[i] || !current[i + 1] || !current[i + 2])
 		error_empty_buff_2(ctx, "Error in input file please rectify", current);
-	if (!ft_strncmp(current + i, "NO", 2) || !ft_strncmp("current + i", "N", 1))
+	if (!ft_strncmp(current + i, "NO", 2))
 		fill_path(current, i, ctx, 1);
-	else if (!ft_strncmp(current + i, "SO", 2) || !ft_strncmp("current + i",
-			"S", 1))
+	else if (!ft_strncmp(current + i, "SO", 2))
 		fill_path(current, i, ctx, 2);
-	else if (!ft_strncmp(current + i, "WE", 2) || !ft_strncmp("current + i",
-			"W", 1))
+	else if (!ft_strncmp(current + i, "WE", 2))
 		fill_path(current, i, ctx, 3);
-	else if (!ft_strncmp(current + i, "EA", 2) || !ft_strncmp("current + i",
-			"E", 1))
+	else if (!ft_strncmp(current + i, "EA", 2))
 		fill_path(current, i, ctx, 4);
 	else
 		error_empty_buff_2(ctx, "please check input file", current);

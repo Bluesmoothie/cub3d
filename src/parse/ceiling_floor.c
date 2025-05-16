@@ -6,20 +6,21 @@
 /*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:55:20 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/14 15:53:17 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:05:04 by sithomas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
 static void	check_line_end(t_context *ctx, char *current, int pos);
-static void	fill_tab(t_context *ctx, int *tab, char *tmp, int nb);
+static int	fill_tab(t_context *ctx, char *tmp, char *current);
 static char	*get_number(t_context *ctx, int pos, int i, char *current);
 static int	move_till_next_colour(t_context *ctx, char *current, int pos);
 
 void	ceiling(t_context *ctx, char *current, int pos, int *tab)
 {
 	int		i;
+	int		nb;
 	char	*tmp;
 
 	pos++;
@@ -28,28 +29,34 @@ void	ceiling(t_context *ctx, char *current, int pos, int *tab)
 	while (current[i] <= '9' && current[i] >= '0')
 		i++;
 	tmp = get_number(ctx, pos, i, current);
-	fill_tab(ctx, tab, tmp, 0);
+	nb = 0;
+	tab[nb++] = fill_tab(ctx, tmp, current);
 	pos = move_till_next_colour(ctx, current, pos);
 	i = pos;
 	while (current[i] <= '9' && current[i] >= '0')
 		i++;
 	tmp = get_number(ctx, pos, i, current);
-	fill_tab(ctx, tab, tmp, 1);
+	tab[nb++] = fill_tab(ctx, tmp, current);
 	pos = move_till_next_colour(ctx, current, pos);
 	i = pos;
 	while (current[i] <= '9' && current[i] >= '0')
 		i++;
 	tmp = get_number(ctx, pos, i, current);
-	fill_tab(ctx, tab, tmp, 2);
+	tab[nb++] = fill_tab(ctx, tmp, current);
 	check_line_end(ctx, current, pos);
 }
 
-static void	fill_tab(t_context *ctx, int *tab, char *tmp, int nb)
+static int	fill_tab(t_context *ctx, char *tmp, char *current)
 {
-	tab[nb] = ft_atoi(tmp);
-	if (tab[nb] < 0 || tab[nb] > 255)
-		error_empty_buff_2(ctx, "problem in floor or ceiling color 1", tmp);
+	int result;
+	
+	if (ft_strlen(tmp) > 3)
+		error_empty_buff_3(ctx, "problem in floor or ceiling color", tmp, (void *)current);
+	result = ft_atoi(tmp);
+	if (result < 0 || result > 255)
+		error_empty_buff_3(ctx, "problem in floor or ceiling color", tmp, (void *)current);
 	free(tmp);
+	return (result);
 }
 
 static int	move_till_next_colour(t_context *ctx, char *current, int pos)
@@ -74,7 +81,7 @@ static char	*get_number(t_context *ctx, int pos, int i, char *current)
 	char	*tmp;
 
 	if (pos == i || i > pos + 3)
-		error_empty_buff_2(ctx, "problem in floor or ceiling color 3", current);
+		error_empty_buff_2(ctx, "problem in floor or ceiling color", current);
 	tmp = ft_substr(current, pos, i - pos);
 	if (!tmp)
 		error_empty_buff_2(ctx, "malloc error", current);
@@ -91,5 +98,5 @@ static void	check_line_end(t_context *ctx, char *current, int pos)
 	while (current[i] == ' ')
 		i++;
 	if (current[i] != '\n')
-		error_empty_buff_2(ctx, "problem in floor or ceiling color 4", current);
+		error_empty_buff_2(ctx, "problem in floor or ceiling color", current);
 }
