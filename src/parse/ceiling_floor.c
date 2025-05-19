@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ceiling_floor.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sithomas <sithomas@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ygille <ygille@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:55:20 by sithomas          #+#    #+#             */
-/*   Updated: 2025/05/16 16:05:04 by sithomas         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:27:06 by ygille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,15 @@ void	ceiling(t_context *ctx, char *current, int pos, int *tab)
 
 static int	fill_tab(t_context *ctx, char *tmp, char *current)
 {
-	int result;
-	
+	int	result;
+
 	if (ft_strlen(tmp) > 3)
-		error_empty_buff_3(ctx, "problem in floor or ceiling color", tmp, (void *)current);
+		error_empty_buff_3(ctx, "problem in floor or ceiling color",
+			tmp, (void *)current);
 	result = ft_atoi(tmp);
 	if (result < 0 || result > 255)
-		error_empty_buff_3(ctx, "problem in floor or ceiling color", tmp, (void *)current);
+		error_empty_buff_3(ctx, "problem in floor or ceiling color",
+			tmp, (void *)current);
 	free(tmp);
 	return (result);
 }
