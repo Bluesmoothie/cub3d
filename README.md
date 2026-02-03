@@ -6,6 +6,26 @@ Inspired by Wolfenstein 3D
 
 ![Screenshot of the game](./screenshot.png)
 
+## Usage
+
+Use ```make``` to build the project  
+
+### Bonus part
+
+When compiled with ```make bonus``` the game support:
+
+- Control with mouse
+- Collisions
+- Animations
+- Doors
+- Minimap
+
+### Controls
+
+WASD to move  
+←→ to view left and right (with mouse in bonus mode)  
+E to open a door (bonus)
+
 ## Maps and textures
 
 Exemple maps and textures are in ```/assets```
