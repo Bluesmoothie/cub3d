@@ -4,6 +4,8 @@ A simple game from scratch with Raycasting
 
 Inspired by Wolfenstein 3D
 
+![Screenshot of the game](./screenshot.png)
+
 ## Maps and textures
 
 Exemple maps and textures are in ```/assets```
